@@ -1,4 +1,4 @@
-# Project Name by ADMIM
+# Suite Spotter by ADMIM
 
 [Andrea Thiel](https://github.com/ariley215)  
 [Dominique McClaney](https://github.com/MccDom1)  
