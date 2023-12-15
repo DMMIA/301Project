@@ -2,6 +2,9 @@
 301 Final Project
 
 
+Test change
+
+
 Group Project: Team Agreement
 The first step in project planning is establishing a Team Agreement. This will be used as the guideline for how your team will collaborate during project week.
 Projects are stressful, and can ignite emotions that otherwise wouldn’t be a problem. It’s important that the safety and security of the group comes first, and that an agreement is in place to establish expectations and accountability among the whole group.
@@ -138,3 +141,4 @@ Upon completion of major feature
 Upon completion of branch’s scope
 How will you communicate that it’s time to merge?
 Slack in group channel
+
