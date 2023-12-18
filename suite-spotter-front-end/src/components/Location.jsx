@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const API_KEY = import.meta.env.GEO_API_KEY;
+const API_KEY = import.meta.env.VITE_GEO_API_KEY;
 
 export default function Location(props) {
 
@@ -22,11 +22,13 @@ export default function Location(props) {
       const city = e.target.elements.locationForm.value;
       const API = `https://us1.locationiq.com/v1/search.php?key=${API_KEY}&q=${city}&format=json`;
       const response = await axios.get(API);
+      console.log(response);
 
       setLocation(response.data[0].display_name.split(',')[0]);
       setFullLocation(response.data[0].display_name);
       setLat(response.data[0].lat);
       setLong(response.data[0].lon);
+      setFormSubmitted(true);
     } catch (error) {
       console.error(error.message);
     }
