@@ -7,35 +7,6 @@ import Card from 'react-bootstrap/Card';
 
 const API_KEY = import.meta.env.GEO_API_KEY;
 
-export default function Homepage() {
-
-    const [location, setLocation] = useState('');
-    const [fullLocation, setFullLocation] = useState('');
-    const [lat, setLat] = useState('');
-    const [long, setLong] = useState('');
-
-    const [formSubmitted, setFormSubmitted] = useState(false);
-
-    const handleLocation = async (e) => {
-        e.preventDefault();
-        try {
-            const city = e.target.elements.locationForm.value;
-            const API = `https://us1.locationiq.com/v1/search.php?key=${API_KEY}&q=${city}&format=json`;
-            const response = await axios.get(API);
-
-            setLocation(response.data[0].display_name.split(',')[0]);
-            setFullLocation(response.data[0].display_name);
-            setLat(response.data[0].lat);
-            setLong(response.data[0].lon);
-        } catch (error) {
-            console.error(error.message);
-            setFormSubmitted(false);
-            setLocation('');
-            setFullLocation('');
-        }
-    }
-    return () =>
-        setFormSubmitted(true);
 
     <Form className="location-form" onSubmit={handleLocation}>
         <Form.Group controlId='locationForm'>
@@ -45,6 +16,8 @@ export default function Homepage() {
         <Button variant='primary' type='submit'>
             Find
         </Button>
+        
+        
     </Form>
     {
         formSubmitted && (
