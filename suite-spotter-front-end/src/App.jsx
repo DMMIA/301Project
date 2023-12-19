@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import Activities from './ActivityPage/Activities';
 
 function App() {
+
+  async function getWeatherFromSearch(lon, lat) {
+    
+  }
+
   return (
     <div className="App">
       <header className="App-header">
