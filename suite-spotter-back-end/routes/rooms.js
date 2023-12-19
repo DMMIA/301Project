@@ -7,22 +7,30 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const amadeus = req.amadeus;
-    // const { latitude, longitude } = req.query;
-    const latitude = 47.608013;
-    const longitude = -122.335167;
+    const { latitude, longitude, guests, checkIn, checkOut, } = req.query;
 
     const response = await amadeus.referenceData.locations.hotels.byGeocode.get({
-      latitude: latitude,
-      longitude: longitude,
+      latitude: latitude || 47.608013,
+      longitude: longitude || -122.335167,
       ratings: '4,5'
     })
     const hotels = response.data;
     const hotelRooms = hotels.map(hotel => hotel.hotelId).join(',');
-    const roomResponse = await amadeus.shopping.hotelOffersSearch.get({
+    console.log(hotelRooms);
+    const body = {
       hotelIds: hotelRooms,
-    });
+      guests: guests || 1,
+      bestRateOnly: false,
+    };
+    if (checkIn) {
+      myObject.checkInDate = checkIn;
+    }
+    if (checkOut) {
+      myObject.checkOutDate = checkOut;
+    }
+    const roomResponse = await amadeus.shopping.hotelOffersSearch.get(body);
     const rooms = roomResponse.data;
-    res.json({ hotels, rooms });
+    res.json({ rooms });
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');
@@ -30,3 +38,5 @@ router.get('/', async (req, res) => {
 });
 
 module.exports = router;
+
+
