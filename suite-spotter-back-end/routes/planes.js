@@ -5,14 +5,18 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
       const amadeus = req.amadeus;
-      // const { latitude, longitude } = req.query;
-      const response = await amadeus.shopping.flightOffersSearch.get({
-        originLocationCode: 'SYD',
-        destinationLocationCode: 'BKK',
-        departureDate: '2023-12-30',
-        adults: '2',
+      const { startPort, endPort, guests, checkIn, checkOut } = req.query;
+      const body = {
+        originLocationCode: startPort || 'SYD',
+        destinationLocationCode: endPort || 'BKK',
+        departureDate: checkIn || '2024-01-01',
+        adults: guests || 1,
         max: '20'
-      });
+      };
+      if(checkOut){
+        body.returnDate = checkOut;
+      };
+      const response = await amadeus.shopping.flightOffersSearch.get(body);
       flights = response.data;
       res.json({ flights });
     } catch (error) {

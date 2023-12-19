@@ -16,7 +16,6 @@ router.get('/', async (req, res) => {
     })
     const hotels = response.data;
     const hotelRooms = hotels.map(hotel => hotel.hotelId).join(',');
-    console.log(hotelRooms);
     const body = {
       hotelIds: hotelRooms,
       guests: guests || 1,
@@ -30,7 +29,7 @@ router.get('/', async (req, res) => {
     }
     const roomResponse = await amadeus.shopping.hotelOffersSearch.get(body);
     const rooms = roomResponse.data;
-    res.json({ rooms });
+    res.json({ hotels , rooms });
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');

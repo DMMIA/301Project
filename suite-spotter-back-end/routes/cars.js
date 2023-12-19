@@ -5,17 +5,18 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const amadeus = req.amadeus;
+    const { latitude, longitude, startPort, guests, checkIn, checkOut } = req.query;
     const body = {
-      "startLocationCode": "SEA",
-      "endAddressLine": "NA",
+      startLocationCode: "SEA",
+      endAddressLine: "NA",
 
-      "endCountryCode": "US",
-      "endGeoCode": "47.6061,-122.335167",
-      "transferType": "PRIVATE",
-      "startDateTime": "2024-04-10T10:30:00",
-      "passengers": 2,
+      endCountryCode: "US",
+      endGeoCode: "47.6061,-122.335167",
+      transferType: "PRIVATE",
+      startDateTime: "2024-04-10T10:30:00",
+      passengers: guests,
 
-      "passengerCharacteristics": [
+      passengerCharacteristics: [
         {
           "passengerTypeCode": "ADT",
           "age": 20
