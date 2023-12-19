@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles.css'; // Your CSS file
 
-import image1 from 'suite-spotter-front-end/src/images/img1andrea.jpg';
-import image2 from 'suite-spotter-front-end/src/images/img2dom.jpeg';
-import image3 from '../images/image3.jpg';
-import image4 from '../images/image4.jpg';
-import image5 from 'suite-spotter-front-end/src/images/img5myyela.jpeg';
+import image1 from '../assets/img1andrea.jpg';
+import image2 from 'suite-spotter-front-end/src/assets/img2dom.jpeg';
+import image3 from '../assets/image3.jpg';
+import image4 from '../assets/image4.jpg';
+import image5 from 'suite-spotter-front-end/src/assets/img5myyela.jpeg';
 
 function AboutPage() {
   return (

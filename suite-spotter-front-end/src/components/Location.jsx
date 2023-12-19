@@ -12,6 +12,8 @@ export default function Location(props) {
   const [fullLocation, setFullLocation] = useState('');
   const [lat, setLat] = useState('');
   const [long, setLong] = useState('');
+  const [iataCode, setIataCode] = useState('');
+  const [countryCode, setCountryCode] = useState('');
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -20,13 +22,16 @@ export default function Location(props) {
     e.preventDefault();
     try {
       const city = e.target.elements.locationForm.value;
-      const response = await axios.get(`/location?city=${city}`);
-      console.log(response);
-
+      const response = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${API_KEY}&q=${city}&format=json`);
       setLocation(response.data[0].display_name.split(',')[0]);
       setFullLocation(response.data[0].display_name);
       setLat(response.data[0].lat);
       setLong(response.data[0].lon);
+
+      const serverResponse = await axios.get(`http://localhost:3001/location?city=${city}`);
+      console.log(serverResponse.data);
+      setIataCode(serverResponse.data[0].iataCode);
+      setCountryCode(serverResponse.data[0].address.countryCode);
       setFormSubmitted(true);
     } catch (error) {
       console.error(error.message);
@@ -57,6 +62,9 @@ export default function Location(props) {
                 </Card.Text>
                 <Card.Text>
                   Long: {long}
+                </Card.Text>
+                <Card.Text>
+                  {iataCode}, {countryCode}
                 </Card.Text>
               </div>
               <Card.Img
