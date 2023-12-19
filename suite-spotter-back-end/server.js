@@ -41,7 +41,7 @@ app.use('/cars', carRoute);
 app.use('/planes', planeRoute);
 app.use('/rooms', roomRoute);
 // app.use('/weather', weatherRoute);
-// app.use('/poi', poiRoute);
+app.use('/poi', poiRoute);
 
 
 
