@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/marco', (req, res) => {
-    res.json(req.body);
+    res.send('Polo');
 })
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
