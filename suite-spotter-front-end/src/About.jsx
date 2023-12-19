@@ -1,6 +1,12 @@
 import React from 'react';
 import './styles.css'; // Your CSS file
 
+import image1 from 'suite-spotter-front-end/src/images/img1andrea.jpg';
+import image2 from 'suite-spotter-front-end/src/images/img2dom.jpeg';
+import image3 from '../images/image3.jpg';
+import image4 from '../images/image4.jpg';
+import image5 from 'suite-spotter-front-end/src/images/img5myyela.jpeg';
+
 function AboutPage() {
   return (
     <div className="container">
@@ -8,29 +14,29 @@ function AboutPage() {
 
       {/* Member 1 */}
       <div className="member">
-        <img src="path_to_image_1.jpg" alt="Member 1" />
-        <h2>Member 1</h2>
+        <img src={image1} alt="Andrea Thiel" />
+        <h2>Andrea Thiel</h2>
         <p>Description for Member 1.</p>
         <div className="links">
-          <a href="github_link_1" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="linkedin_link_1" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/ariley215" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/andrea-thiel-ab0603296/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
 
       {/* Member 2 */}
       <div className="member">
-        <img src="path_to_image_2.jpg" alt="Member 2" />
-        <h2>Member 2</h2>
+        <img src={image2} alt="	Dominique McClaney" />
+        <h2>Dominique McClaney</h2>
         <p>Description for Member 2.</p>
         <div className="links">
-          <a href="github_link_2" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="linkedin_link_2" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/MccDom1" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/dominique-mcclaney/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
 
       {/* Member 3 */}
       <div className="member">
-        <img src="path_to_image_3.jpg" alt="Member 3" />
+        <img src={image3} alt="Member 3" />
         <h2>Member 3</h2>
         <p>Description for Member 3.</p>
         <div className="links">
@@ -41,7 +47,7 @@ function AboutPage() {
 
       {/* Member 4 */}
       <div className="member">
-        <img src="path_to_image_4.jpg" alt="Member 4" />
+        <img src={image4} alt="Member 4" />
         <h2>Member 4</h2>
         <p>Description for Member 4.</p>
         <div className="links">
@@ -52,12 +58,12 @@ function AboutPage() {
 
       {/* Member 5 */}
       <div className="member">
-        <img src="path_to_image_5.jpg" alt="Member 5" />
-        <h2>Member 5</h2>
+        <img src={image5} alt="Myyela Isaac" />
+        <h2>Myyela Isaac</h2>
         <p>Description for Member 5.</p>
         <div className="links">
-          <a href="github_link_5" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="linkedin_link_5" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/JaquizeIsaac" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/myyela-isaac/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
 
