@@ -36,23 +36,23 @@ function AboutPage() {
 
       {/* Member 3 */}
       <div className="member">
-        <img src={image3} alt="Member 3" />
-        <h2>Member 3</h2>
+        <img src={image3} alt="Immanuel Shin" />
+        <h2>Immanuel Shin</h2>
         <p>Description for Member 3.</p>
         <div className="links">
-          <a href="github_link_3" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="linkedin_link_3" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/ImmanuelShin" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/immanuel-shin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
 
       {/* Member 4 */}
       <div className="member">
-        <img src={image4} alt="Member 4" />
-        <h2>Member 4</h2>
+        <img src={image4} alt="Michelangelo Ascalon" />
+        <h2>Michelangelo Ascalon</h2>
         <p>Description for Member 4.</p>
         <div className="links">
-          <a href="github_link_4" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="linkedin_link_4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/mikeascalon   " target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/michelangelo-ascalon-708851114/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
 
