@@ -8,7 +8,7 @@ import Location from './components/Location';
 import Test from './components/Test';
 import AuthButtons from './Auth/AuthButtons';
 
-import Activities from './ActivityPage/Activities';
+import Activities from './components/ActivityPage/Activities';
 import { performApiRequest } from './scripts/apiService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -39,9 +39,6 @@ function App() {
       )}
       <button onClick={handleRequestClick}>Ping</button>
       <p>Ping result: {requestResult}</p>
-      <Amadeus 
-
-      />
       <Location />
       <Test />
     </>
