@@ -20,8 +20,7 @@ export default function Location(props) {
     e.preventDefault();
     try {
       const city = e.target.elements.locationForm.value;
-      const API = `https://us1.locationiq.com/v1/search.php?key=${API_KEY}&q=${city}&format=json`;
-      const response = await axios.get(API);
+      const response = await axios.get(`/location?city=${city}`);
       console.log(response);
 
       setLocation(response.data[0].display_name.split(',')[0]);
