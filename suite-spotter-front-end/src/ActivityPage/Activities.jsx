@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {Container, Row, Col, Card, ListGroup} from 'react-bootstrap/Container';
+import {Container, Row, Col, Card, ListGroup} from 'react-bootstrap';
 import axios from 'axios'
 import Weather from './Weather';
 import RestaurantList from './RestaurantList'

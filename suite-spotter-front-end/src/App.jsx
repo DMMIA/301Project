@@ -11,6 +11,7 @@ import Activities from './ActivityPage/Activities';
 import { performApiRequest } from './scripts/apiService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Homepage from './components/Homepage';
 
 function App() {
 
@@ -38,7 +39,7 @@ function App() {
       )}
       <button onClick={handleRequestClick}>Ping</button>
       <p>Ping result: {requestResult}</p>
-      <Amadeus 
+      <Homepage
 
       />
       <Location />
