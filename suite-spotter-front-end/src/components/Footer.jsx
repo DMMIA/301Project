@@ -1,6 +1,3 @@
-
-
-
 <footer className="App-footer">
         <Section title="Book Your Stay">
             <p>Plan your vacation today. Book your stay with Suite Spotter.</p>
