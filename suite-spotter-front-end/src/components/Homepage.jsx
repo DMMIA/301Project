@@ -4,6 +4,7 @@ import AccordionSection from './AccordionSection';
 import Location from './Location';
 
 export default function Homepage(props) {
+    console.log(props)
     const locationData = props.locationData;
     const guests = props.guests;
     const checkIn = props.checkIn;

@@ -14,8 +14,11 @@ const SERVER = import.meta.env.VITE_SERVER_URL
 
 
 const Activities = ( props ) => {
-  const { locationData } = props.location.state || {};
-  const { lat, long } = locationData || {};
+  console.log(props)
+  // get the start date and end date from the form. then define it as a const. pass this data to the server through the /weather api call. (i thinkj its checkIn and checkOut)
+  // define searchQuery for axios calls
+  // make sure data mapping is working 
+  const { lat, long, checkIn, checkOut } = props.locationData || {};
 
   const [weatherData, setWeatherData] = useState(null);
   const [restaurantData, setRestaurantData] = useState(null);
@@ -24,17 +27,21 @@ const Activities = ( props ) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const weatherResponse = await axios.get(`${SERVER}/weather`);
-        console.log('Weather Response:', weatherResponse.data);
-        setWeatherData(weatherResponse.data);
+        // const weatherResponse = await axios.get(`${SERVER}/weather`);
+        // console.log('Weather Response:', weatherResponse.data);
+        // setWeatherData(weatherResponse.data);
 
-        const restaurantResponse = await axios.get(`${SERVER}/food`);
-        console.log('food Response:', restaurantResponse.data)
-        setRestaurantData(restaurantResponse.data);
+        // const restaurantResponse = await axios.get(`${SERVER}/food`);
+        // console.log('food Response:', restaurantResponse.data)
+        // setRestaurantData(restaurantResponse.data);
 
-        const entertainmentResponse = await axios.get(`${SERVER}/poi`);
-        console.log('entertainment response:', entertainmentResponse.data)
-        setEntertainmentData(entertainmentResponse.data);
+        // const entertainmentResponse = await axios.get(`${SERVER}/poi`);
+        // console.log('entertainment response:', entertainmentResponse.data)
+        // setEntertainmentData(entertainmentResponse.data);
+        getWeatherFromSearch(long, lat);
+        // getRestaurantFromSearch(searchQuery);
+        // getEntertainmentFromSearch(searchQuery);
+        
       } catch (error) {
         console.error('Error fetching data', error);
       }
@@ -47,7 +54,7 @@ const Activities = ( props ) => {
   async function getWeatherFromSearch(long, lat) {
     const localApi = `${SERVER}`;
     console.log('local API', localApi);
-    const response = await axios.get(`${localApi}/weather?lon=${long}&lat=${lat}&searchQuery=${searchQuery}`);
+    const response = await axios.get(`${localApi}/weather?lon=${long}&lat=${lat}`);
     console.log(response, 'weather response');
     setWeatherData(response);
 
@@ -92,7 +99,7 @@ const Activities = ( props ) => {
 
               <Card.Title>Weather</Card.Title>
               <Card.Text>
-                <Weather weatherData={weatherData} />
+                {/* <Weather weatherData={weatherData} /> */}
               </Card.Text>
             </Card.Body>
           </Card>
