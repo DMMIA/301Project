@@ -102,11 +102,9 @@ const Activities = ( props ) => {
             <Card.Body>
               <Card.Title>Local Restaurants</Card.Title>
               <ListGroup variant="flush">
-                <RestaurantList restaurantData={restaurantData} />
-                <ListGroup.Item>Restaurant 1</ListGroup.Item>
-                <ListGroup.Item>Restaurant 2</ListGroup.Item>
-                <ListGroup.Item>Restaurant 3</ListGroup.Item>
-
+                {restaurantData && restaurantData.map((restaurant, index) => (
+                  <ListGroup.Item key={index}>{restaurant.name}</ListGroup.Item>
+                  ))}
               </ListGroup>
             </Card.Body>
           </Card>
@@ -116,11 +114,9 @@ const Activities = ( props ) => {
             <Card.Body>
               <Card.Title>Entertainment</Card.Title>
               <ListGroup variant="flush">
-                <Entertainment entertainmentData={entertainmentData} />
-                <ListGroup.Item>Event 1</ListGroup.Item>
-                <ListGroup.Item>Event 2</ListGroup.Item>
-                <ListGroup.Item>Event 3</ListGroup.Item>
-
+                {entertainmentData && entertainmentData.map((event, index) => (
+                <Entertainment key={index} event={event} />
+                ))}
               </ListGroup>
             </Card.Body>
           </Card>
