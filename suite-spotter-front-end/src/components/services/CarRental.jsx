@@ -22,7 +22,6 @@ export default function CarRental({ latitude, longitude, guests, checkIn, countr
         setCarRentalData(response.data);
       } catch (error) {
         console.error('Car Rental Data Error:', error.message);
-
       }
     };
     fetchCarRentalData();
