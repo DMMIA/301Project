@@ -31,6 +31,7 @@ export default function Homepage(props) {
                 checkOut={props.checkOut}
                 airportData={props.airportData}
                 updateAirportData={props.updateAirportData}
+                setTrip={props.setTrip}
             />
             <Footer />
         </>
