@@ -1,6 +1,5 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 
-
 const Weather = (weatherData) => {
   if(!weatherData) {
     return null;
