@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Header from './Header';
 import Footer from './Footer';
 import InputForm from './InputForm';
 import AccordionSection from './AccordionSection';
@@ -34,7 +33,6 @@ export default function Homepage() {
 
     return (
         <>
-            <Header />
             <button onClick={showAlert}>Show State Data</button>
             <Location
                 updateLocationData={updateLocationData}
