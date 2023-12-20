@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
@@ -58,7 +59,7 @@ export default function Location(props) {
       </Form>
       {formSubmitted && (
         <>
-        <NavigateToActivities lat={lat} long={long} />
+        <NavigateToActivities lat={lat} long={long} updateLocationData={props.updateLocationData} />
           <Card
             style={{ width: '40vw' }}
             className='city-card'

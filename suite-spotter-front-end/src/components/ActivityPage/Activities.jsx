@@ -13,9 +13,9 @@ import Entertainment from './Entertainment';
 const SERVER = import.meta.env.VITE_SERVER_URL
 
 
-const Activities = ( props, {lat, long }) => {
-  const { locationData } = props.location.state;
-  const { lat, long } = locationData;
+const Activities = ( props ) => {
+  const { locationData } = props.location.state || {};
+  const { lat, long } = locationData || {};
 
   const [weatherData, setWeatherData] = useState(null);
   const [restaurantData, setRestaurantData] = useState(null);
@@ -41,7 +41,7 @@ const Activities = ( props, {lat, long }) => {
     };
 
     fetchData();
-  }, []);
+  }, [long, lat]);
 
 
   async function getWeatherFromSearch(long, lat) {
