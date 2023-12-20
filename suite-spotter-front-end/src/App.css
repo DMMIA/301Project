@@ -1,6 +1,5 @@
 /* app.css */
 
-/* Define the color variables */
 :root {
   --sage-green: #87AE73;
   --soft-ivory: #F5F5F5;
@@ -9,30 +8,25 @@
   --soft-blue-gray: #6AA7B2;
 }
 
-/* Apply the color scheme */
 body {
   background-color: var(--soft-ivory);
-  /* Add other body styling as needed */
 }
 
 .container {
-  /* Container styles */
   padding: 20px;
 }
 
 .member {
-  /* Member styles */
   background-color: var(--sage-green);
   border: 2px solid var(--muted-gray);
   padding: 20px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .member img {
-  /* Image styles */
-  max-width: 200px; /* Adjust this value to suit the desired size */
-  height: auto;
-  display: block;
-  margin: 0 auto; /* Center the images */
-  border-radius: 50%; /* Optionally apply border-radius for circular images */
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
 }
