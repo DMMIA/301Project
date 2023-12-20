@@ -12,6 +12,8 @@ const poiRoute = require('./routes/poi');
 const foodRoute = require('./routes/food');
 const locationRoute = require('./routes/location');
 
+const tripsRoute = require('./routes/trips');
+
 const { auth } = require('express-oauth2-jwt-bearer');
 const { amadeus } = require('./auth/amadeus');
 
@@ -44,9 +46,7 @@ app.use('/rooms', roomRoute);
 app.use('/weather', weatherRoute);
 app.use('/poi', poiRoute);
 app.use('/food', foodRoute);
-
-
-
+app.use('/trips', tripsRoute);
 
 const PORT = process.env.PORT || 3000;
 
