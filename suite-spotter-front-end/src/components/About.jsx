@@ -1,3 +1,8 @@
+// About.jsx
+
+import React from 'react';
+import './app.css'; // Import your CSS file
+
 import image1 from '../assets/img1andrea.jpg';
 import image2 from '../assets/img2dom.jpeg';
 import image3 from '../assets/image3.jpg';
@@ -22,7 +27,7 @@ function About() {
 
       {/* Member 2 */}
       <div className="member">
-        <img src={image2} alt="	Dominique McClaney" />
+        <img src={image2} alt="Dominique McClaney" />
         <h2>Dominique McClaney</h2>
         <p>Description for Member 2.</p>
         <div className="links">
@@ -48,7 +53,7 @@ function About() {
         <h2>Michelangelo Ascalon</h2>
         <p>Description for Member 4.</p>
         <div className="links">
-          <a href="https://github.com/mikeascalon   " target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://github.com/mikeascalon" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://www.linkedin.com/in/michelangelo-ascalon-708851114/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
