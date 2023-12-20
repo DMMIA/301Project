@@ -9,6 +9,7 @@ const planeRoute = require('./routes/planes');
 const roomRoute = require('./routes/rooms');
 const weatherRoute = require('./routes/cars');
 const poiRoute = require('./routes/poi');
+const foodRoute = require('./routes/food');
 const locationRoute = require('./routes/location');
 
 const { auth } = require('express-oauth2-jwt-bearer');
@@ -42,6 +43,7 @@ app.use('/planes', planeRoute);
 app.use('/rooms', roomRoute);
 // app.use('/weather', weatherRoute);
 app.use('/poi', poiRoute);
+app.use('/food', foodRoute);
 
 
 
