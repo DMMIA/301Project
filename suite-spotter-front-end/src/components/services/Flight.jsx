@@ -35,13 +35,9 @@ export default function Flight({ guests, checkIn, checkOut, updateAirportData,up
 
   const handleButtonClick = (flight) => {
     const newTrip = {
-      type: 'Flight',
       data: flight,
     };
-
-    // Update trips state in MyTrips component
     updateTrips(newTrip);
-    
   };
   return (
     <>
@@ -75,9 +71,9 @@ export default function Flight({ guests, checkIn, checkOut, updateAirportData,up
           <Carousel.Item key={index}>
             <h3>{flight.carrierCode}</h3>
             <p>Price: {flight.price.total}</p>
-            <p>Number of Stops: {flight.itineraries[0].segments.length - 1}</p>
             <p>Departure Time: {flight.itineraries[0].segments[0].departure.at}</p>
             <p>Arrival Time: {flight.itineraries[0].segments.slice(-1)[0].arrival.at}</p>
+            <p>Number of Stops: {flight.itineraries[0].segments.length - 1}</p>
             <p>Cabin: {flight.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
             <Button onClick={() => handleButtonClick(flight)}>Add to My Trips</Button>
           </Carousel.Item>

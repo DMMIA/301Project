@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Carousel, Button } from 'react-bootstrap';
 
 
-export default function CarRental({ latitude, longitude, guests, checkIn, countryCode, iataCode, updateTrips }) {
+export default function CarRental({ latitude, longitude, iataCode, guests, checkIn, countryCode, updateTrips }) {
   const [carRentalData, setCarRentalData] = useState(null);
   const SERVER = import.meta.env.VITE_SERVER_URL
   useEffect(() => {
@@ -13,10 +13,10 @@ export default function CarRental({ latitude, longitude, guests, checkIn, countr
           params: {
             latitude,
             longitude,
+            iataCode,
             guests,
             checkIn,
             countryCode,
-            iataCode,
           },
         });
 
@@ -30,10 +30,9 @@ export default function CarRental({ latitude, longitude, guests, checkIn, countr
 
   const handleButtonClick = (offer) => {
     const newTrip = {
-      type: 'CarRental',
       data: offer,
     };
-
+    updateTrips(newTrip);
   }
 
   return (

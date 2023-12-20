@@ -1,9 +1,9 @@
 import { useState} from 'react';
 import BookingComponent from './BookingComponent';
 
-const MyTrips = () => {
+const MyTrips = (props) => {
   const [trips, setTrips] = useState([]);
-
+  const airportData = props.airportData;
   const updateTrips = (newTrip) => {
     setTrips((prevTrips) => [...prevTrips, newTrip]);
   };
@@ -16,7 +16,10 @@ const MyTrips = () => {
     <div>
       <h1>Trip Information</h1>
       <button onClick={clearTrips}>Clear Trips</button>
-      <BookingComponent trips={trips} />
+      <BookingComponent 
+      trips={trips} 
+      airportData={props.airportData}
+      />
     </div>
   );
 };
