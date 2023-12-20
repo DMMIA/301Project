@@ -15,18 +15,13 @@ router.get('/', async (req, res) => {
       transferType: "PRIVATE",
       startDateTime: "2024-04-10T10:30:00",
       passengers: guests,
-
-      passengerCharacteristics: [
-        {
-          "passengerTypeCode": "ADT",
-          "age": 20
-        },
-        {
-          "passengerTypeCode": "CHD",
-          "age": 10
-        }
-      ]
+      passengerCharacteristics: []
     };
+    for(let x in guests) {
+      body.passengerCharacteristics.push({
+        "passengerTypeCode": "ADT",
+      });
+    }
     const response = await amadeus.shopping.transferOffers.post(JSON.stringify(body));
     res.json(response.data.slice(0,10));
   } catch (error) {
