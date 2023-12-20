@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Carousel, Button } from 'react-bootstrap';
 
 
-export default function CarRental({ latitude, longitude, guests, checkIn, countryCode, iataCode }) {
+export default function CarRental({ latitude, longitude, guests, checkIn, countryCode, iataCode, updateTrips }) {
   const [carRentalData, setCarRentalData] = useState(null);
   useEffect(() => {
     const fetchCarRentalData = async () => {
@@ -28,9 +28,12 @@ export default function CarRental({ latitude, longitude, guests, checkIn, countr
   }, [latitude, longitude, guests, checkIn, countryCode, iataCode]);
 
   const handleButtonClick = (offer) => {
-    console.log('Clicked Button. Item Data:', offer);
-    // Add any additional handling logic here
-  };
+    const newTrip = {
+      type: 'CarRental',
+      data: offer,
+    };
+
+  }
 
   return (
     <>
