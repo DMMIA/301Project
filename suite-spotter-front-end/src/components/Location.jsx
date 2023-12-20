@@ -58,6 +58,7 @@ export default function Location(props) {
       </Form>
       {formSubmitted && (
         <>
+        <NavigateToActivities lat={lat} long={long} />
           <Card
             style={{ width: '40vw' }}
             className='city-card'

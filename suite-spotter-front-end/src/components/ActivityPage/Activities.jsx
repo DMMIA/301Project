@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -12,8 +13,8 @@ import Entertainment from './Entertainment';
 const SERVER = import.meta.env.VITE_SERVER_URL
 
 
-const Activities = (props) => {
-  const { locationData } = props.locations.state;
+const Activities = ( props, {lat, long }) => {
+  const { locationData } = props.location.state;
   const { lat, long } = locationData;
 
   const [weatherData, setWeatherData] = useState(null);
@@ -24,12 +25,15 @@ const Activities = (props) => {
     const fetchData = async () => {
       try {
         const weatherResponse = await axios.get(`${SERVER}/weather`);
+        console.log('Weather Response:', weatherResponse.data);
         setWeatherData(weatherResponse.data);
 
-        const restaurantResponse = await axios.get(`${SERVER}/restaurant`);
+        const restaurantResponse = await axios.get(`${SERVER}/food`);
+        console.log('food Response:', restaurantResponse.data)
         setRestaurantData(restaurantResponse.data);
 
-        const entertainmentResponse = await axios.get(`${SERVER}/entertainment`);
+        const entertainmentResponse = await axios.get(`${SERVER}/poi`);
+        console.log('entertainment response:', entertainmentResponse.data)
         setEntertainmentData(entertainmentResponse.data);
       } catch (error) {
         console.error('Error fetching data', error);
@@ -37,7 +41,7 @@ const Activities = (props) => {
     };
 
     fetchData();
-  }, [searchQuery]);
+  }, []);
 
 
   async function getWeatherFromSearch(long, lat) {
@@ -51,12 +55,12 @@ const Activities = (props) => {
 
   async function getRestaurantFromSearch(searchQuery) {
     try {
-      const localApi = '';
-      const response = await axios.get(`${localApi}/restaurants?searchQuery=${searchQuery}`);
+      const localApi = `${SERVER}`;
+      const response = await axios.get(`${localApi}/food?searchQuery=${searchQuery}`);
       console.log('API Response for Restaurants:', response.data);
       const restaurantData = response.data;
 
-      setRestaurantData(RestaurantData.map((restaurant, index) => ({ ...restaurant, id: index })));
+      setRestaurantData(restaurantData.map((restaurant, index) => ({ ...restaurant, id: index })));
       console.log('movie data', response.data);
     } catch (error) {
       console.error('Error fetching movie data:', error.message);
@@ -65,8 +69,8 @@ const Activities = (props) => {
 
   async function getEntertainmentFromSearch(searchQuery) {
     try {
-      const localApi = '';
-      const response = await axios.get(`${localApi}/entertainment?searchQuery=${searchQuery}`);
+      const localApi = `${SERVER}`;
+      const response = await axios.get(`${localApi}/poi?searchQuery=${searchQuery}`);
       console.log('API Response for Restaurants:', response.data);
       const entertainmentData = response.data;
 
