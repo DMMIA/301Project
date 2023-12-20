@@ -5,10 +5,11 @@ import { Carousel, Button } from 'react-bootstrap';
 
 export default function CarRental({ latitude, longitude, iataCode, guests, checkIn, countryCode, updateTrips }) {
   const [carRentalData, setCarRentalData] = useState(null);
+  const SERVER = import.meta.env.VITE_SERVER_URL
   useEffect(() => {
     const fetchCarRentalData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/cars', {
+        const response = await axios.get(`${SERVER}/cars`, {
           params: {
             latitude,
             longitude,

@@ -5,10 +5,11 @@ import Carousel from 'react-bootstrap/Carousel';
 export default function Hotel({ latitude, longitude, guests, checkIn, checkOut, updateTrips }) {
   const [hotelData, setHotelData] = useState(null);
 
+  const SERVER = import.meta.env.VITE_SERVER_URL
   useEffect(() => {
     const fetchHotelData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/rooms', {
+        const response = await axios.get(`${SERVER}/rooms`, {
           params: {
             latitude,
             longitude,

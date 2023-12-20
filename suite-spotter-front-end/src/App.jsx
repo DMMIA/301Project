@@ -11,6 +11,7 @@ import './App.css';
 
 function App() {
   const [locationData, setLocationData] = useState('');
+
   const [guests, setGuests] = useState(null);
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
@@ -55,6 +56,7 @@ function App() {
           }
           />
           <Route path="/activities" element={
+            locationData &&
             <Activities
               updateLocationData={updateLocationData}
               updateInputFormData={updateInputFormData}

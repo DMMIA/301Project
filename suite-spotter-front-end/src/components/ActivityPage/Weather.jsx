@@ -1,6 +1,6 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const Weather = (weatherData) => {
+const Weather = (weatherData, key) => {
   if(!weatherData) {
     return null;
   }
@@ -8,7 +8,8 @@ const Weather = (weatherData) => {
     <ListGroup>
       <ListGroup.Title>Weather</ListGroup.Title>
       <ListGroup.Item key={key}>
-        weatherData
+      {weatherData.weather.date}
+      {weatherData.weather.description}
       </ListGroup.Item>
       <ListGroup.Item></ListGroup.Item>
       <ListGroup.Item></ListGroup.Item>
