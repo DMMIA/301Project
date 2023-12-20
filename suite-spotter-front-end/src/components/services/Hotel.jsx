@@ -45,6 +45,13 @@ export default function Hotel({ latitude, longitude, guests, checkIn, checkOut }
     // Fetch hotel data when the component mounts or when inputs change
     fetchHotelData();
   }, [latitude, longitude, guests, checkIn, checkOut]);
+  
+  const handleButtonClick = (index) => {
+    // Log the data of the clicked carousel item
+    console.log('add to Mytrips Hotel:', hotelData[index]);
+  };
+ 
+
   return (
     <>
     {hotelData && (
@@ -56,6 +63,7 @@ export default function Hotel({ latitude, longitude, guests, checkIn, checkOut }
                 <p>Beds: {data.beds}</p>
                 <p>Bed Size: {data.bedType}</p>
                 <p>Price: {data.price.currency} {data.price.total}</p>
+                <button onClick={handleButtonClick}>Add to My Trips</button>
               </div>
             </Carousel.Item>
           ))}

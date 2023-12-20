@@ -30,6 +30,11 @@ export default function Flight({ guests, checkIn, checkOut, updateAirportData })
       console.error('Flight Search Error:', error.message);
     }
   };
+
+  const handleButtonClick = (flight) => {
+    console.log('Clicked Button. Flight Data:', flight);
+    
+  };
   return (
     <>
      <Form>
@@ -66,6 +71,7 @@ export default function Flight({ guests, checkIn, checkOut, updateAirportData })
             <p>Departure Time: {flight.itineraries[0].segments[0].departure.at}</p>
             <p>Arrival Time: {flight.itineraries[0].segments.slice(-1)[0].arrival.at}</p>
             <p>Cabin: {flight.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
+            <Button onClick={() => handleButtonClick(flight)}>Add to My Trips</Button>
           </Carousel.Item>
         ))}
       </Carousel>
