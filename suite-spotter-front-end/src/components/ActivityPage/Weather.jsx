@@ -7,7 +7,9 @@ const Weather = (weatherData) => {
    return (
     <ListGroup>
       <ListGroup.Title>Weather</ListGroup.Title>
-      <ListGroup.Item></ListGroup.Item>
+      <ListGroup.Item key={key}>
+        weatherData
+      </ListGroup.Item>
       <ListGroup.Item></ListGroup.Item>
       <ListGroup.Item></ListGroup.Item>
       <ListGroup.Item></ListGroup.Item>
