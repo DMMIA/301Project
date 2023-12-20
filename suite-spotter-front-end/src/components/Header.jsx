@@ -19,6 +19,7 @@ export default function Header() {
           <Nav.Link as={Link} to="/">Home</Nav.Link>
           <Nav.Link as={Link} to="/trips">My Trips</Nav.Link>
           <Nav.Link as={Link} to="/activities">Activities</Nav.Link>
+          <Nav.Link as={Link} to="/calendar">Calendar</Nav.Link>
           <Nav.Link as={Link} to="/about">About Us</Nav.Link>
           <AuthButtons />
         </Nav>
