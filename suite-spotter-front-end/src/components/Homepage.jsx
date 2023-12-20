@@ -1,30 +1,14 @@
-import { useState } from 'react';
 import Footer from './Footer';
 import InputForm from './InputForm';
 import AccordionSection from './AccordionSection';
 import Location from './Location';
 
-export default function Homepage() {
-    const [locationData, setLocationData] = useState(null);
-    const [guests, setGuests] = useState(null);
-    const [checkIn, setCheckIn] = useState(null);
-    const [checkOut, setCheckOut] = useState(null);
-    const [airportData, setAirportData] = useState(null);
-
-    const updateLocationData = (newLocationData) => {
-        setLocationData(newLocationData);
-    };
-
-    const updateInputFormData = (newGuests, newCheckIn, newCheckOut) => {
-        setGuests(newGuests);
-        setCheckIn(newCheckIn);
-        setCheckOut(newCheckOut);
-    };
-
-    // Function to update airport data
-    const updateAirportData = (newAirportData) => {
-        setAirportData(newAirportData);
-    };
+export default function Homepage(props) {
+    const locationData = props.locationData;
+    const guests = props.guests;
+    const checkIn = props.checkIn;
+    const checkOut = props.checkOut;
+    const airportData = props.airportData;
 
     const showAlert = () => {
         // Display an alert with all the state data
@@ -35,18 +19,18 @@ export default function Homepage() {
         <>
             <button onClick={showAlert}>Show State Data</button>
             <Location
-                updateLocationData={updateLocationData}
+                updateLocationData={props.updateLocationData}
             />
             <InputForm
-                updateInputFormData={updateInputFormData}
+                updateInputFormData={props.updateInputFormData}
             />
             <AccordionSection
-                locationData={locationData}
-                guests={guests}
-                checkIn={checkIn}
-                checkOut={checkOut}
-                airportData={airportData}
-                updateAirportData={updateAirportData}
+                locationData={props.locationData}
+                guests={props.guests}
+                checkIn={props.checkIn}
+                checkOut={props.checkOut}
+                airportData={props.airportData}
+                updateAirportData={props.updateAirportData}
             />
             <Footer />
         </>
