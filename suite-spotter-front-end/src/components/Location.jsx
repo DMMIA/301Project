@@ -33,6 +33,12 @@ export default function Location(props) {
       setIataCode(serverResponse.data[0].iataCode);
       setCountryCode(serverResponse.data[0].address.countryCode);
       setFormSubmitted(true);
+      props.updateLocationData({
+        lat: response.data[0].lat,
+        long: response.data[0].lon,
+        iataCode: serverResponse.data[0].iataCode,
+        countryCode: serverResponse.data[0].address.countryCode,
+      });
     } catch (error) {
       console.error(error.message);
     }
