@@ -1,12 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useNavigate } from 'react-router-dom';
 
 const API_KEY = import.meta.env.VITE_GEO_API_KEY;
 
-export default function Location(props) {
+
+
+const NavigateToActivities = ({ lat, long }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate('/activities', { state: { locationData: { lat, long } } });
+  }, [lat, long]);
+
+  return null; 
+};
+
+
+
+export default function Location() {
 
   const [location, setLocation] = useState('');
   const [fullLocation, setFullLocation] = useState('');
@@ -28,10 +43,19 @@ export default function Location(props) {
       setLat(response.data[0].lat);
       setLong(response.data[0].lon);
       setFormSubmitted(true);
+
+      navigateToActivities(lat, long);
     } catch (error) {
       console.error(error.message);
     }
   }
+
+  const navigateToActivities = (lat, long) => {
+    setFormSubmitted(false);
+  }
+
+
+
   return (
     <>
       <Form className="location-form" onSubmit={handleLocation}>
@@ -67,6 +91,7 @@ export default function Location(props) {
               />
             </Card.Body>
           </Card>
+          <NavigateToActivities lat={lat} long={long} />
         </>
       )}
     </>
