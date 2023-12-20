@@ -1,14 +1,20 @@
 
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const Weather = () => {
+
+const Weather = (weatherData) => {
+  if(!weatherData) {
+    return null;
+  }
+ 
   return (
     <ListGroup>
-      <ListGroup.title>Weather</ListGroup.title>
-      <ListGroup.Item>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-      <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-      <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+      <ListGroup.Title>Weather</ListGroup.Title>
+      <ListGroup.Item></ListGroup.Item>
+      <ListGroup.Item></ListGroup.Item>
+      <ListGroup.Item></ListGroup.Item>
+      <ListGroup.Item></ListGroup.Item>
+
     </ListGroup>
   );
 }
