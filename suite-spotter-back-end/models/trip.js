@@ -6,10 +6,25 @@ const tripSchema = new mongoose.Schema({
     required: true,
   },
   locationData: {
-    latitude: Number,
-    longitude: Number,
-    iataCode: String,
-    countryCode: String,
+    type: {
+      latitude: {
+        type: Number,
+        required: true,
+      },
+      longitude: {
+        type: Number,
+        required: true,
+      },
+      iataCode: {
+        type: String,
+        required: true,
+      },
+      countryCode: {
+        type: String,
+        required: true,
+      },
+    },
+    required: true,
   },
   guests: {
     type: Number,
