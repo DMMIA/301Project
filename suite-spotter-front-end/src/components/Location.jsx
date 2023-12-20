@@ -30,7 +30,6 @@ export default function Location(props) {
       setLong(response.data[0].lon);
 
       const serverResponse = await axios.get(`http://localhost:3001/location?city=${city}`);
-      console.log(serverResponse.data);
       setIataCode(serverResponse.data[0].iataCode);
       setCountryCode(serverResponse.data[0].address.countryCode);
       setFormSubmitted(true);
@@ -59,7 +58,6 @@ export default function Location(props) {
       </Form>
       {formSubmitted && (
         <>
-        <NavigateToActivities lat={lat} long={long} updateLocationData={props.updateLocationData} />
           <Card
             style={{ width: '40vw' }}
             className='city-card'
