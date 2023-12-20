@@ -55,7 +55,9 @@ export default function Location() {
         countryCode: serverResponse.data[0].address.countryCode,
       });
 
+
       navigateToActivities(lat, long);
+
     } catch (error) {
       console.error(error.message);
     }
