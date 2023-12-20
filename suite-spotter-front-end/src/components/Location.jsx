@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 const API_KEY = import.meta.env.VITE_GEO_API_KEY;
 
 export default function Location(props) {
+  console.log(props)
 
   const [location, setLocation] = useState('');
   const [fullLocation, setFullLocation] = useState('');
@@ -17,7 +18,7 @@ export default function Location(props) {
   const [countryCode, setCountryCode] = useState('');
 
   const [formSubmitted, setFormSubmitted] = useState(false);
-
+  const SERVER = import.meta.env.VITE_SERVER_URL;
 
   const handleLocation = async (e) => {
     e.preventDefault();
@@ -29,13 +30,14 @@ export default function Location(props) {
       setLat(response.data[0].lat);
       setLong(response.data[0].lon);
 
-      const serverResponse = await axios.get(`http://localhost:3001/location?city=${city}`);
+      const serverResponse = await axios.get(`${SERVER}/location?city=${city}`);
       console.log(serverResponse.data);
       setIataCode(serverResponse.data[0].iataCode);
       setCountryCode(serverResponse.data[0].address.countryCode);
       setFormSubmitted(true);
 
       props.updateLocationData({
+        
         lat: response.data[0].lat,
         long: response.data[0].lon,
         iataCode: serverResponse.data[0].iataCode,
@@ -59,7 +61,7 @@ export default function Location(props) {
       </Form>
       {formSubmitted && (
         <>
-        <NavigateToActivities lat={lat} long={long} updateLocationData={props.updateLocationData} />
+        {/* <NavigateToActivities lat={lat} long={long} updateLocationData={props.updateLocationData} /> */}
           <Card
             style={{ width: '40vw' }}
             className='city-card'

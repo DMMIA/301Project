@@ -3,9 +3,12 @@ const axios = require('axios');
 const router = express.Router();
 require('dotenv').config();
 
-router.get('/', async (req, res) => {
+// router.get('/', async (req, res) => {
+ async function weatherFunction (req, res) {
+  console.log('made it inside weather function')
+  console.log('request query', req.query)
   try {
-    const { latitude, longitude, checkIn, checkOut } = req.query;
+    const { lat, lon, checkIn, checkOut } = req.query;
     const API_KEY = process.env.WEATHER_API_KEY;
 
     const checkInDate = new Date(checkIn);
@@ -16,21 +19,22 @@ router.get('/', async (req, res) => {
 
     let apiUrl;
     if (daysDifference <= 16) {
-      apiUrl = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=${API_KEY}`;
+      apiUrl = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${API_KEY}`;
     } else {
       checkInDate.setFullYear(checkInDate.getFullYear() - 1);
       checkOutDate.setFullYear(checkOutDate.getFullYear() - 1);
       const formattedCheckIn = formatDate(checkInDate);
       const formattedCheckOut = formatDate(checkOutDate);
-      apiUrl = `https://api.weatherbit.io/v2.0/history/daily?lat=${latitude}&lon=${longitude}&start_date=${formattedCheckIn}&end_date=${formattedCheckOut}&key=${API_KEY}`;
+      apiUrl = `https://api.weatherbit.io/v2.0/history/daily?lat=${lat}&lon=${lon}&start_date=${formattedCheckIn}&end_date=${formattedCheckOut}&key=${API_KEY}`;
     }
     const response = await axios.get(apiUrl);
+    console.log('weather response', response);
     res.json(response.data);
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');
   }
-});
+ };
 function formatDate(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -38,4 +42,5 @@ function formatDate(date) {
   return `${year}-${month}-${day}`;
 }
 
-module.exports = router;
+// module.exports = router;
+module.exports = weatherFunction;

@@ -4,17 +4,19 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 
+
 export default function Flight({ guests, checkIn, checkOut, updateAirportData,updateTrips }){
   const [startAirport, setStartAirport] = useState('');
   const [endAirport, setEndAirport] = useState('');
   const [flights, setFlights] = useState([]);
 
+  const SERVER = import.meta.env.VITE_SERVER_URL
   const handleFlightSearch = async () => {
     try {
       console.log('Start Airport:', startAirport);
       console.log('End Airport:', endAirport);
 
-      const response = await axios.get('http://localhost:3001/planes', {
+      const response = await axios.get(`${SERVER}/planes`, {
         params: {
           startAirport,
           endAirport,

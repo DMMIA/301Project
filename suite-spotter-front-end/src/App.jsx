@@ -10,12 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+
   const [locationData, setLocationData] = useState(null);
   const [guests, setGuests] = useState(null);
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
   const [airportData, setAirportData] = useState(null);
-
+  console.log(locationData)
   const updateLocationData = (newLocationData) => {
     setLocationData(newLocationData);
     console.log(newLocationData);
@@ -50,6 +51,7 @@ function App() {
           }
           />
           <Route path="/activities" element={
+            locationData &&
             <Activities
               updateLocationData={updateLocationData}
               updateInputFormData={updateInputFormData}
