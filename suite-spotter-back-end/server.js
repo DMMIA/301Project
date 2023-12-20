@@ -15,10 +15,10 @@ const locationRoute = require('./routes/location');
 const { auth } = require('express-oauth2-jwt-bearer');
 const { amadeus } = require('./auth/amadeus');
 
-// mongoose.connect(process.env.MONGODB_URI);
-// const db = mongoose.connection;
-// db.on('error', (error) => console.error(error));
-// db.once('open', () => console.log('Connected to db'));
+mongoose.connect(process.env.MONGODB_URI);
+const db = mongoose.connection;
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('Connected to db'));
 
 const app = express();
 app.use(cors());
