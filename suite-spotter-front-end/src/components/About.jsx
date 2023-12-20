@@ -1,13 +1,10 @@
-import React from 'react';
-import './styles.css'; // Your CSS file
-
 import image1 from '../assets/img1andrea.jpg';
-import image2 from 'suite-spotter-front-end/src/assets/img2dom.jpeg';
+import image2 from '../assets/img2dom.jpeg';
 import image3 from '../assets/image3.jpg';
 import image4 from '../assets/image4.jpg';
-import image5 from 'suite-spotter-front-end/src/assets/img5myyela.jpeg';
+import image5 from '../assets/img5myyela.jpeg';
 
-function AboutPage() {
+function About() {
   return (
     <div className="container">
       <h1>About Us</h1>
@@ -71,4 +68,4 @@ function AboutPage() {
   );
 }
 
-export default AboutPage;
+export default About;
