@@ -43,6 +43,8 @@ const tripSchema = new mongoose.Schema({
     endingAirport: String,
     price: Number,
     flightNumber: String,
+    startDate: Date,
+    endDate: Date,
   },
   carRentalData: {
     provider: String,
