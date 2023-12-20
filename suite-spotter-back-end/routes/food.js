@@ -10,8 +10,9 @@ router.get('/', async (req, res) => {
       latitude: latitude || 41.397158,
       longitude: longitude || 2.160873,
       radius: 1,
-      categories: 'SIGHTS,NIGHTLIFE,SHOPPING'
+      categories: 'RESTAURANT'
     });
+
     res.json(response.data);
   } catch (error) {
     console.error(error);
