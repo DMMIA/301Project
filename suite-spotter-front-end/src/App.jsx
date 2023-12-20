@@ -4,6 +4,7 @@ import Header from './components/Header';
 import MyTrips from './components/myTrips/MyTrips';
 import About from './components/About';
 import Activities from './components/ActivityPage/Activities';
+import MyCalendar from './components/calendarPage/MyCalendar';
 import Homepage from './components/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -26,7 +27,6 @@ function App() {
     setCheckOut(newCheckOut);
   };
 
-  // Function to update airport data
   const updateAirportData = (newAirportData) => {
     setAirportData(newAirportData);
   };
@@ -74,6 +74,7 @@ function App() {
               airportData={airportData}
             />
           } />
+          <Route path="/calendar" element={<MyCalendar />} />
         </Routes>
       </div>
     </Router>
