@@ -1,70 +1,25 @@
-
-import { useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import axios from 'axios';
-
-import AuthButtons from './Auth/AuthButtons';
-
-import Location from './components/Location';
-import Test from './components/Test';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import MyTrips from './components/myTrips/MyTrips';
+import About from './components/About';
 import Activities from './components/ActivityPage/Activities';
 import Homepage from './components/Homepage';
-
-import Location from './components/Location';
-import Test from './components/Test';
-import AuthButtons from './Auth/AuthButtons';
-
-import Activities from './components/ActivityPage/Activities';
-
-
-import AuthButtons from './Auth/AuthButtons';
-
-import Location from './components/Location';
-import Test from './components/Test';
-import Activities from './components/ActivityPage/Activities';
-import Homepage from './components/Homepage';
-
-import { performApiRequest } from './scripts/apiService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
-
-  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const [requestResult, setRequestResult] = useState('Requires login');
-
-  async function handleRequestClick() {
-    try {
-      const accessTokenSilently = await getAccessTokenSilently();
-      const response = await performApiRequest('/ping', accessTokenSilently);
-      setRequestResult(response);
-    } catch (error) {
-      setRequestResult(error);
-    }
-  }
   return (
-    <>
-      <AuthButtons />
-      {isAuthenticated && (
-        <div>
-          <h2>Profile</h2>
-          <p>{user.name}</p>
-          <p>{user.email}</p>
-        </div>
-      )}
-      <button onClick={handleRequestClick}>Ping</button>
-      <p>Ping result: {requestResult}</p>
-
-
-        <Homepage />
-
-      <Location />
-      <Test />
-
-
-        <Homepage />
-
-    </>
+    <Router>
+      <div className="app-container">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/activities" element={<Activities />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/trips" element={<MyTrips />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 

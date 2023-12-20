@@ -1,7 +1,7 @@
 
 import BookingComponent from './BookingComponent';
 
-const myTrips = () => {
+const MyTrips = () => {
   const trips = [  {
     tripId: 1,
     destination: 'New York',// hard code trips delete when we get the api from the backend
@@ -31,4 +31,4 @@ const myTrips = () => {
   );
 };
 
-export default App;
+export default MyTrips;
