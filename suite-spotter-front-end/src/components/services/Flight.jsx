@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 
-export default function Flight({ guests, checkIn, checkOut, updateAirportData }){
+export default function Flight({ guests, checkIn, checkOut, updateAirportData,updateTrips }){
   const [startAirport, setStartAirport] = useState('');
   const [endAirport, setEndAirport] = useState('');
   const [flights, setFlights] = useState([]);
@@ -32,7 +32,13 @@ export default function Flight({ guests, checkIn, checkOut, updateAirportData })
   };
 
   const handleButtonClick = (flight) => {
-    console.log('Clicked Button. Flight Data:', flight);
+    const newTrip = {
+      type: 'Flight',
+      data: flight,
+    };
+
+    // Update trips state in MyTrips component
+    updateTrips(newTrip);
     
   };
   return (

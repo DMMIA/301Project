@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 
-export default function Hotel({ latitude, longitude, guests, checkIn, checkOut }) {
+export default function Hotel({ latitude, longitude, guests, checkIn, checkOut, updateTrips }) {
   const [hotelData, setHotelData] = useState(null);
 
   useEffect(() => {
@@ -49,6 +49,11 @@ export default function Hotel({ latitude, longitude, guests, checkIn, checkOut }
   const handleButtonClick = (index) => {
     // Log the data of the clicked carousel item
     console.log('add to Mytrips Hotel:', hotelData[index]);
+    const newTrip = {
+      type: 'Hotel',
+      data: hotelData[index],
+    };
+    updateTrips(newTrip);
   };
  
 
