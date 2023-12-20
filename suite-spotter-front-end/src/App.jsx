@@ -10,26 +10,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
-  const [locationData, setLocationData] = useState(null);
+  const [locationData, setLocationData] = useState('');
   const [guests, setGuests] = useState(null);
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
   const [airportData, setAirportData] = useState(null);
+  const [tripData, setTripData] = useState(null);
 
   const updateLocationData = (newLocationData) => {
     setLocationData(newLocationData);
-    console.log(newLocationData);
   };
 
-  const updateInputFormData = (newGuests, newCheckIn, newCheckOut) => {
-    setGuests(newGuests);
-    setCheckIn(newCheckIn);
-    setCheckOut(newCheckOut);
+  const updateInputFormData = (formData) => {
+    setGuests(formData.numberOfGuests);
+    setCheckIn(formData.checkInDate);
+    setCheckOut(formData.checkOutDate);
   };
 
   const updateAirportData = (newAirportData) => {
     setAirportData(newAirportData);
   };
+
+  const setTrip = (tripData) => {
+    setTripData(tripData);
+  }
 
   return (
     <Router>
@@ -46,6 +50,7 @@ function App() {
               checkIn={checkIn}
               checkOut={checkOut}
               airportData={airportData}
+              setTrip={setTrip}
             />
           }
           />
@@ -72,6 +77,7 @@ function App() {
               checkIn={checkIn}
               checkOut={checkOut}
               airportData={airportData}
+              tripData={tripData}
             />
           } />
           <Route path="/calendar" element={<MyCalendar />} />
