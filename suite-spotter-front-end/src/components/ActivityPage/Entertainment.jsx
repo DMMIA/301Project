@@ -2,24 +2,25 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const Entertainment = ({ entertainmentData  }) => {
-  if (!entertainmentData) {
-    console.log(entertainmentData, 'data inside entertainment')
+
+const Entertainment = ({ entertainment }) => {
+  if (!entertainment) {
+    console.log(entertainment, 'data inside entertainment')
     return null;
   }
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Title>Places to visit near you</Card.Title>
-        {entertainmentData && entertainmentData.map((POI, index) => (
-          <ListGroup key={index}>
-        <ListGroup.Item>
-          Name:{POI.name}
-          Type of entertainment:{POI.category}
-        </ListGroup.Item>
+    <>
+    
+      <Card style={{ width: '16rem' }}>
+      <Card.Title>{entertainment.category}
+        </Card.Title>
+        <ListGroup.Item >
+          Name:{entertainment.name} 
+          </ListGroup.Item>
         
-      </ListGroup>
-      ))}
-    </Card>
+      </Card>
+     
+    </>
   )
 }
 
