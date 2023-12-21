@@ -4,13 +4,6 @@ import moment from "moment";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './MyCalendar.css';
 
-
-
-
-
-
-
-
 const localizer = momentLocalizer(moment);
 
 function MyCalendar() {
@@ -53,9 +46,6 @@ function MyCalendar() {
         onDrillUp={() => alert("You drilled up")}
         onDrillDownDate={(date) => alert(`You drilled down to ${date}`)}
         onDrillUpDate={() => alert("You drilled up")}
-
-
-
       />
     </div>
   );

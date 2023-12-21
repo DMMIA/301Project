@@ -7,17 +7,20 @@ const mongoose = require('mongoose');
 const carRoute = require('./routes/cars');
 const planeRoute = require('./routes/planes');
 const roomRoute = require('./routes/rooms');
-const weatherRoute = require('./routes/cars');
+const weatherRoute = require('./routes/weather');
 const poiRoute = require('./routes/poi');
+const foodRoute = require('./routes/food');
 const locationRoute = require('./routes/location');
+
+const tripsRoute = require('./routes/trips');
 
 const { auth } = require('express-oauth2-jwt-bearer');
 const { amadeus } = require('./auth/amadeus');
 
-// mongoose.connect(process.env.MONGODB_URI);
-// const db = mongoose.connection;
-// db.on('error', (error) => console.error(error));
-// db.once('open', () => console.log('Connected to db'));
+mongoose.connect(process.env.MONGODB_URI);
+const db = mongoose.connection;
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('Connected to db'));
 
 const app = express();
 app.use(cors());
@@ -40,11 +43,10 @@ app.use('/location', locationRoute);
 app.use('/cars', carRoute);
 app.use('/planes', planeRoute);
 app.use('/rooms', roomRoute);
-// app.use('/weather', weatherRoute);
+app.use('/weather', weatherRoute);
 app.use('/poi', poiRoute);
-
-
-
+app.use('/food', foodRoute);
+app.use('/trips', tripsRoute);
 
 const PORT = process.env.PORT || 3000;
 

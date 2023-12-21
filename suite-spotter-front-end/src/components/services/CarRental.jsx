@@ -1,31 +1,40 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Button } from 'react-bootstrap';
 
-export default function CarRental({ latitude, longitude, guests, checkIn, countryCode, iataCode }) {
+
+export default function CarRental({ latitude, longitude, iataCode, guests, checkIn, countryCode, updateTrips }) {
   const [carRentalData, setCarRentalData] = useState(null);
+  const SERVER = import.meta.env.VITE_SERVER_URL
   useEffect(() => {
     const fetchCarRentalData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/cars', {
+        const response = await axios.get(`${SERVER}/cars`, {
           params: {
             latitude,
             longitude,
+            iataCode,
             guests,
             checkIn,
             countryCode,
-            iataCode,
           },
         });
 
         setCarRentalData(response.data);
       } catch (error) {
         console.error('Car Rental Data Error:', error.message);
-
       }
     };
     fetchCarRentalData();
   }, [latitude, longitude, guests, checkIn, countryCode, iataCode]);
+
+  const handleButtonClick = (offer) => {
+    const newTrip = {
+      data: offer,
+    };
+    updateTrips(newTrip);
+  }
+
   return (
     <>
       {carRentalData && (
@@ -42,6 +51,7 @@ export default function CarRental({ latitude, longitude, guests, checkIn, countr
                 <p>Provider: {offer.serviceProvider.name}</p>
                 <p>Seats: {offer.vehicle.seats[0].count}</p>
                 <p>Price: {offer.quotation.monetaryAmount} {offer.quotation.currencyCode}</p>
+                <Button onClick={() => handleButtonClick(offer)}>Add to My Trips </Button>
               </Carousel.Caption>
             </Carousel.Item>
           ))}

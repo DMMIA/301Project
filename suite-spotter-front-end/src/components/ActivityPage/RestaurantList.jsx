@@ -6,7 +6,7 @@ const RestaurantList = () => {
 
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.title>Places to eat near you</Card.title>
+      <Card.Title>Places to eat near you</Card.Title>
       <ListGroup>
         <ListGroup.Item>Cras justo odio</ListGroup.Item>
         <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>

@@ -1,45 +1,66 @@
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import axios from 'axios';
-import AuthButtons from './Auth/AuthButtons';
-
-import Location from './components/Location';
-import Test from './components/Test';
+import Header from './components/Header';
+import MyTrips from './components/myTrips/MyTrips';
+import About from './components/About';
 import Activities from './components/ActivityPage/Activities';
+import MyCalendar from './components/calendarPage/MyCalendar';
 import Homepage from './components/Homepage';
-import { performApiRequest } from './scripts/apiService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+  const [formData, setFormData] = useState({
+    locationData: '',
+    guests: 1,
+    checkIn: null,
+    checkOut: null,
+    airportData: false,
+  });
+  const [tripData, setTripData] = useState('');
 
-  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const [requestResult, setRequestResult] = useState('Requires login');
+  const updateFormData = (newFormData) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      ...newFormData,
+    }));
+  };
 
-  async function handleRequestClick() {
-    try {
-      const accessTokenSilently = await getAccessTokenSilently();
-      const response = await performApiRequest('/ping', accessTokenSilently);
-      setRequestResult(response);
-    } catch (error) {
-      setRequestResult(error);
-    }
+  const setTrip = (tripData) => {
+    setTripData(tripData);
   }
+
   return (
-    <>
-      <AuthButtons />
-      {isAuthenticated && (
-        <div>
-          <h2>Profile</h2>
-          <p>{user.name}</p>
-          <p>{user.email}</p>
-        </div>
-      )}
-      <button onClick={handleRequestClick}>Ping</button>
-      <p>Ping result: {requestResult}</p>
-        <Homepage />
-    </>
+    <Router>
+      <div className="app-container">
+        <Header />
+        <Routes>
+          <Route path="/" element={
+            <Homepage
+              formData={formData}
+              updateFormData={updateFormData}
+              setTrip={setTrip}
+            />
+          }
+          />
+          <Route path="/activities" element={
+            <Activities
+              formData={formData}
+              updateFormData={updateFormData}
+            />
+          } />
+          <Route path="/about" element={<About />} />
+          <Route path="/trips" element={
+            <MyTrips
+              formData={formData}
+              updateFormData={updateFormData}
+              tripData={tripData}
+            />
+          } />
+          <Route path="/calendar" element={<MyCalendar />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
