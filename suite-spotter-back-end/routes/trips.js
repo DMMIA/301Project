@@ -43,10 +43,8 @@ router.patch('/:id', getTrip, async (req, res) => {
 
 // Delete one
 router.delete('/:id', getTrip, async (req, res) => {
-  console.log(req.params)
   const id = req.params.id;
   let resdelete = res.trip;
-  console.log(resdelete);
   try {
     await Trip.findByIdAndDelete(id);
     res.json({ message: 'Trip deleted successfully' });
