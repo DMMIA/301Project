@@ -1,13 +1,24 @@
-import { useState} from 'react';
+import { useState, useEffect } from 'react';
 import BookingComponent from './BookingComponent';
+import axios from 'axios';
 
-const MyTrips = () => {
+const MyTrips = ({ formData, updateFormData, tripData, submitState, setSubmitState }) => {
+  const SERVER = import.meta.env.VITE_SERVER_URL;
+
   const [trips, setTrips] = useState([]);
+  const [submit, setSubmit] = useState(submitState);
 
-  const updateTrips = (newTrip) => {
-    setTrips((prevTrips) => [...prevTrips, newTrip]);
-  };
-
+  async function getTrips() {
+    try {
+      const apiUrl = `${SERVER}/trips`;
+      console.log('API URL:', apiUrl);
+      const response = await axios.get(`${SERVER}/trips`);
+      setTrips(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
   const clearTrips = () => {
     setTrips([]);
   };
@@ -16,7 +27,10 @@ const MyTrips = () => {
     <div>
       <h1>Trip Information</h1>
       <button onClick={clearTrips}>Clear Trips</button>
-      <BookingComponent trips={trips} />
+      <button onClick={getTrips}>get Trips</button>
+      <BookingComponent
+        trips={trips}
+      />
     </div>
   );
 };

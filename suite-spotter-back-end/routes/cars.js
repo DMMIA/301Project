@@ -5,25 +5,24 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const amadeus = req.amadeus;
-    const { latitude, longitude, startPort, guests, checkIn, checkOut } = req.query;
+    const { latitude, longitude, iataCode, guests, checkIn, countryCode } = req.query;
     const body = {
-      startLocationCode: "SEA",
+      startLocationCode: iataCode,
       endAddressLine: "NA",
-
-      endCountryCode: "US",
-      endGeoCode: "47.6061,-122.335167",
+      endCountryCode: countryCode,
+      endGeoCode: latitude + "," + longitude,
       transferType: "PRIVATE",
-      startDateTime: "2024-04-10T10:30:00",
+      startDateTime: checkIn + "T06:00:00",
       passengers: guests,
       passengerCharacteristics: []
     };
-    for(let x in guests) {
+    for(let x in (guests - 1)) {
       body.passengerCharacteristics.push({
         "passengerTypeCode": "ADT",
       });
     }
     const response = await amadeus.shopping.transferOffers.post(JSON.stringify(body));
-    res.json(response.data.slice(0,10));
+    res.json(response.data);
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');

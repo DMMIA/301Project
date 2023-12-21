@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
     const response = await amadeus.referenceData.locations.cities.get({
       keyword: city
     });
-    console.log(response.data);
     res.json(response.data);
 
   } catch (error) {
