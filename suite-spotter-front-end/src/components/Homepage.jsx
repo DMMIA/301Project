@@ -2,7 +2,7 @@ import InputForm from './InputForm';
 import AccordionSection from './AccordionSection';
 import Location from './Location';
 
-export default function Homepage({ formData, updateFormData, setTrip, setSubmitState, tripData }) {
+export default function Homepage({ formData, updateFormData, setTrip, resetData, tripData }) {
 
   return (
     <>
@@ -19,9 +19,8 @@ export default function Homepage({ formData, updateFormData, setTrip, setSubmitS
         updateFormData={updateFormData}
         tripData={tripData}
         setTrip={setTrip}
-        setSubmitState={setSubmitState}
+        resetData={resetData}
       />
-      
     </>
   );
 

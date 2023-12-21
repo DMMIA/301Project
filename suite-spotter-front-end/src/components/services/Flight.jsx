@@ -47,7 +47,7 @@ export default function Flight({ formData, updateFormData, updateTrips }) {
   };
   return (
     <>
-      <Form>
+      <Form className="flight-form">
         <Form.Group controlId="startAirport">
           <Form.Label>Starting Airport</Form.Label>
           <Form.Control
@@ -68,7 +68,7 @@ export default function Flight({ formData, updateFormData, updateTrips }) {
           />
         </Form.Group>
 
-        <Button variant="primary" onClick={handleFlightSearch}>
+        <Button variant="primary" className="submission-btn" onClick={handleFlightSearch}>
           Search Flights
         </Button>
       </Form>
