@@ -8,8 +8,20 @@
   --soft-blue-gray: #6AA7B2;
 }
 
+#root {
+  height: 100%;
+  width: 80%;
+  margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
 body {
   background-color: var(--soft-ivory);
+  width: 100%;
 }
 
 .container {
@@ -52,7 +64,44 @@ body {
 h1,
 h2,
 p {
-  color: var(--earth-brown);
+  color: black;
+}
+
+.app-header {
+  background-color: var(--sage-green);
+}
+
+.app-header .navbar {
+  padding: 10px;
+}
+
+.nav-buttons {
+  width: 50%;
+}
+
+.nav-buttons .navbar-collapse .navbar-nav>* {
+  border-radius: 5px;
+  margin: 0 5px 0 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.nav-buttons .navbar-collapse .navbar-nav>*:hover {
+  background-color: #7a9c69;
+  transform: translate(-1px, 1px);
+}
+
+.auth-button {
+  background-color: var(--earth-brown);
+
+}
+
+.auth-button:focus,
+.auth-button:hover {
+  border-color: var(--sage-green);
+}
+
+.main {
+  background-color: #467d83;
 }
 
 .about-background {
@@ -68,3 +117,80 @@ p {
   justify-content: center;
 }
 
+.nav-logo .hotel-image {
+  width: 20%;
+}
+
+.app-section {
+  padding: 8px 20px 8px 20px;
+  border-radius: 10px;
+  margin: clamp(60px, 5%, 100px) 0;
+  font-size: clamp(1rem, 1vw, 1.5rem);
+}
+
+.location-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.location-form {
+  width: 30%;
+  padding: 16px;
+  border-radius: 10px;
+  margin: auto;
+  text-align: center;
+  background-color: var(--soft-ivory);
+}
+
+.location-form button {
+  margin-top: 10px;
+  background-color: var(--sage-green);
+  border-color: var(--sage-green);
+}
+
+.location-form button:hover {
+  background-color: #7a9c69;
+  border-color: var(--sage-green);
+}
+
+.city-card {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--soft-ivory);
+}
+
+.inputForm-section {
+  background-color: var(--soft-ivory);
+  padding: 20px;
+  margin: 0 20px 0 20px;
+}
+
+.inputForm-section div {
+  width: 90%;
+  margin: auto;
+}
+
+.big-calendar {
+  background-color: var(--soft-ivory);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.app-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--sage-green);
+}
+
+.app-footer a {
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+}

@@ -20,8 +20,7 @@ export default function InputForm(props) {
   };
 
   return (
-    <Form>
-
+    <Form className="inputForm-section app-section">
       <Form.Group controlId="numberOfGuests">
         <Form.Label>Number of Guests</Form.Label>
         <Form.Control

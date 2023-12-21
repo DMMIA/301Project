@@ -8,7 +8,7 @@ function Login() {
     loginWithRedirect();
   }
   return (!isAuthenticated &&
-    <button onClick={handleLogin}>Log in</button>
+    <button className="auth-button" onClick={handleLogin}>Log in</button>
   );
 }
 export default Login;
