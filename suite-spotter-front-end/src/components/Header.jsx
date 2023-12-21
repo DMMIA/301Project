@@ -2,6 +2,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 import AuthButtons from '../Auth/AuthButtons';
+import logo from '../assets/logo.png';
 
 export default function Header() {
   return (
@@ -10,8 +11,8 @@ export default function Header() {
         <div className="nav-logo">
           <Navbar.Brand as={Link} to="/">
             <img
-              src="src/assets/logo.png"
-              alt="Hotel Room"
+              src={logo}
+              alt="Logo"
               className="hotel-image"
             />
           </Navbar.Brand>
