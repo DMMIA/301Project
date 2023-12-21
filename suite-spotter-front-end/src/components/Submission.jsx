@@ -52,13 +52,11 @@ export default function Submission({formData, tripData, onClick, showAlert, beam
   }
 
   return (
-    <>
-      <Button onClick={showAlert}>Show Collected Data</Button>
-      <Button onClick={onClick}>Clear Collected Data</Button>
-      <Button onClick={() => {
-        console.log(tripData, formData);
+    <div className="trip-submit-btns">
+      <Button className="submission-btn" onClick={() => {
         addTrip();
       }}>Book Now!</Button>
-    </>
+      <Button className="submission-btn" onClick={onClick}>Reset Trip</Button>
+    </div>
   )
 }

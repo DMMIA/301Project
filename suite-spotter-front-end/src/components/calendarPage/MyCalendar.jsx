@@ -1,21 +1,26 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import { useState } from "react";
 import moment from "moment";
+import Popup from './Popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment);
 
-function MyCalendar(props) {
-  const trips = [{
-    startDate: "2023-12-01",
-    endDate: "2023-12-05",
-    name: "Seattle trip"
-  }];
-  const [events, setEvents] = useState(trips.map(trip => ({
-    start: moment(trip.startDate).toDate(),
-    end: moment(trip.endDate).toDate(),
-    title: trip.name,
+function MyCalendar({ tripList }) {
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [events, setEvents] = useState(tripList.map(trip => ({
+    start: moment(trip.checkIn).toDate(),
+    end: moment(trip.checkOut).toDate(),
+    title: trip.destination,
+    id: trip._id,
+    tripData: trip
   })));
+
+  const handleEventClick = (event) => {
+    setSelectedEvent(event);
+    setShowModal(true);
+  };
 
   return (
     <div className="big-calendar">
@@ -23,14 +28,20 @@ function MyCalendar(props) {
         localizer={localizer}
         defaultDate={new Date()}
         defaultView="month"
-        events={events}
         style={{ height: "100vh" }}
-        onSelectEvent={(event) => alert(event.title)}
+        events={events}
+        onSelectEvent={handleEventClick}
         selectable
         resizable
-        onSelectSlot={(slotInfo) => alert(`You selected slot: ${slotInfo}`)}
-        // other event handlers
       />
+      {selectedEvent && (
+        <Popup
+          show={showModal}
+          onClose={() => setShowModal(false)}
+          eventData={selectedEvent.tripData}
+        />
+      )}
+
     </div>
   );
 }

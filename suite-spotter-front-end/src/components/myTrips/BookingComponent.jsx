@@ -1,60 +1,91 @@
+import axios from 'axios';
+import { Card, Row, Col, Button } from 'react-bootstrap';
+import Accordion from 'react-bootstrap/Accordion'
 
-
-import { Card, Row, Col } from 'react-bootstrap';
-
-const BookingComponent = ({ trips }) => {
-    return (
-      <div>
-        {trips.map((trip, index) => (
-          <Card key={index} className="mb-3">
-            <Card.Body>
-              <Card.Title>{trip.destination}</Card.Title>
-              <Row>
-                <Col md={4}>
-                  <Card.Text>
-                    {trip.hotel && (
-                      <>
-                        <strong>Hotel:</strong> {trip.hotel}
-                        <br />
-                        <strong>Check-in:</strong> {trip.checkInDate}
-                        <br />
-                        <strong>Check-out:</strong> {trip.checkOutDate}
-                      </>
-                    )}
-                  </Card.Text>
-                </Col>
-                <Col md={4}>
-                  <Card.Text>
-                    {trip.carRental && (
-                      <>
-                        <strong>Car Rental:</strong> {trip.carRental}
-                        <br />
-                        <strong>Pick-up:</strong> {trip.carPickUpDate}
-                        <br />
-                        <strong>Drop-off:</strong> {trip.carDropOffDate}
-                      </>
-                    )}
-                  </Card.Text>
-                </Col>
-                <Col md={4}>
-                  <Card.Text>
-                    {trip.planeTicket && (
-                      <>
-                        <strong>Plane Ticket:</strong> {trip.planeTicket}
-                        <br />
-                        <strong>Departure:</strong> {trip.departureDate}
-                        <br />
-                        <strong>Return:</strong> {trip.returnDate}
-                      </>
-                    )}
-                  </Card.Text>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
-    );
+const BookingComponent = ({ trips, onDeleteTrip }) => {
+  const SERVER = import.meta.env.VITE_SERVER_URL;
+  const handleDeleteTrip = async (index) => {
+    try {
+      const tripToDelete = trips[index];
+      const response = await axios.delete(`${SERVER}/trips/${tripToDelete._id}`);
+      console.log('Deleted trip with ID:', tripToDelete._id);
+      onDeleteTrip(index);
+    } catch (error) {
+      console.error('Error deleting trip:', error.message);
+    }
   };
-  
-  export default BookingComponent;
+
+  return (
+    <div>
+      <Accordion defaultActiveKey="0">
+        {trips.map((trip, index) => (
+          <Accordion.Item key={index} eventKey={index}>
+            <Accordion.Header>
+              {trip.destination}
+
+            </Accordion.Header>
+            <Accordion.Body>
+              {trip.hotelData && (
+                <>
+
+                  {trip.airportData && (
+                    <>
+                      <strong>Flight Number:</strong> {trip.airportData.flightNumber}
+                      <br />
+                      <strong>Departure:</strong> {trip.airportData.startDate}
+                      <br />
+                      <strong>Return:</strong> {trip.airportData.endDate}
+                      <br />
+                      <strong>From:</strong> {trip.airportData.startingAirport}
+                      <strong>  Arrive:</strong> {trip.airportData.endingAirport}
+                      <br />
+                      <strong>Price</strong> {`${trip.airportData.price}${trip.airportData.currency}`}
+                      <br />
+
+                    </>
+                  )}
+
+
+                  {/* <strong>Hotel:</strong> {trip.hotel}
+<br /> */}
+                  <strong>Check-in:</strong> {trip.checkIn}
+                  <br />
+                  <strong>Check-out:</strong> {trip.checkOut}
+                  <br />
+                  <strong>Beds:</strong> {trip.hotelData.beds}
+                  <br />
+                  <strong>Price:</strong> {`${trip.hotelData.price} ${trip.hotelData.currency}`}
+                  <br />
+
+                  {trip.carRentalData && (
+                    <>
+                      <strong>Car Rental:</strong> {trip.carRentalData.provider}
+                      <br />
+                      <strong>Pick-up:</strong> {trip.carPickUpDate}
+                      <br />
+                      <strong>Drop-off:</strong> {trip.carDropOffDate}
+                      <br />
+                      <img src={trip.carRentalData.imageURL} />
+                      <br />
+                    </>
+                  )}
+
+
+                </>
+              )}
+
+              <Button variant="danger" onClick={() => handleDeleteTrip(index)}>
+                Delete
+              </Button>
+            </Accordion.Body>
+          </Accordion.Item>
+        ))}
+      </Accordion>
+    </div>
+  );
+};
+
+
+
+
+export default BookingComponent;
