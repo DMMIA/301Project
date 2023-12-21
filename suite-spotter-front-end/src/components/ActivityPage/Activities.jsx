@@ -39,7 +39,9 @@ const Activities = (props) => {
         // const entertainmentResponse = await axios.get(`${SERVER}/poi`);
         // console.log('entertainment response:', entertainmentResponse.data)
         // setEntertainmentData(entertainmentResponse.data);
-        getWeatherFromSearch(long, lat, checkIn, checkOut);
+        if (lat && long && checkIn) {
+          await getWeatherFromSearch(long, lat, checkIn, checkOut);
+        }
         // getRestaurantFromSearch(searchQuery);
         // getEntertainmentFromSearch(searchQuery);
 
@@ -52,12 +54,12 @@ const Activities = (props) => {
   }, [long, lat, checkIn, checkOut]);
 
 
-  async function getWeatherFromSearch(long, lat) {
+  async function getWeatherFromSearch(long, lat, checkIn, checkOut) {
     const localApi = `${SERVER}`;
     console.log('local API', localApi);
-    const response = await axios.get(`${localApi}/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
-    console.log(response, 'weather response');
-    setWeatherData(response);
+    const response = await axios.get(`http://localhost:3001/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
+    console.log(response.data.data, 'weather response');
+    setWeatherData(response.data.data);
 
   }
 
@@ -101,7 +103,7 @@ const Activities = (props) => {
               <Card.Title>Weather</Card.Title>
               <Card.Text>
                 {weatherData ? (
-                  <Weather weatherData={weatherData.data} />
+                  <Weather weatherData={weatherData} />
                 ) : (
                   <p>Loading weather data...</p>
                 )}

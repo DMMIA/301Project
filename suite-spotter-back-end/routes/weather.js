@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     const daysDifference = Math.floor((checkOutDate - currentDate) / (24 * 60 * 60 * 1000));
 
     let apiUrl;
-    if (daysDifference <= 16) {
+    if (Math.abs(daysDifference) <= 16) {
       apiUrl = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=${API_KEY}`;
     } else {
       checkInDate.setFullYear(checkInDate.getFullYear() - 1);
@@ -27,8 +27,7 @@ router.get('/', async (req, res) => {
     const response = await axios.get(apiUrl);
     res.json(response.data);
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.status(error.response.status).send("Error: " + error.response.data.error);
   }
 });
 function formatDate(date) {
