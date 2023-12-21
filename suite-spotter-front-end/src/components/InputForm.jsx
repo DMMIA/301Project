@@ -3,17 +3,12 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 export default function InputForm(props) {
-  const [formData, setFormData] = useState({
-    numberOfGuests: '',
-    checkInDate: '',
-    checkOutDate: '',
-  });
   const handleChange = (e) => {
     const { name, value } = e.target;
     const formattedValue = name.includes("Date") ? formatDate(value) : value;
-
-    setFormData({
-      ...formData,
+  
+    props.updateFormData({
+      ...props.formData,
       [name]: formattedValue,
     });
   };
@@ -24,20 +19,16 @@ export default function InputForm(props) {
     return formattedDate;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.updateInputFormData(formData);
-  };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
 
       <Form.Group controlId="numberOfGuests">
         <Form.Label>Number of Guests</Form.Label>
         <Form.Control
           type="number"
           placeholder="Enter number of guests"
-          name="numberOfGuests"
-          value={formData.numberOfGuests}
+          name="guests"
+          value={props.formData.guests || ''}
           onChange={handleChange}
         />
       </Form.Group>
@@ -46,8 +37,8 @@ export default function InputForm(props) {
         <Form.Label>Check-In Date</Form.Label>
         <Form.Control
           type="date"
-          name="checkInDate"
-          value={formData.checkInDate}
+          name="checkIn"
+          value={props.formData.checkIn || ''}
           onChange={handleChange}
         />
       </Form.Group>
@@ -56,15 +47,11 @@ export default function InputForm(props) {
         <Form.Label>Check-Out Date</Form.Label>
         <Form.Control
           type="date"
-          name="checkOutDate"
-          value={formData.checkOutDate}
+          name="checkOut"
+          value={props.formData.checkOut || ''}
           onChange={handleChange}
         />
       </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
     </Form>
   );
 }
