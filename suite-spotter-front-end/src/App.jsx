@@ -11,14 +11,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     locationData: '',
     guests: 1,
     checkIn: null,
     checkOut: null,
     airportData: '',
-  });
-  const [tripData, setTripData] = useState('');
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+  const [tripData, setTripData] = useState({});
+  const [tripList, setTripList] = useState([]);
 
   const updateFormData = (newFormData) => {
     setFormData((prevData) => ({
@@ -30,6 +33,11 @@ function App() {
   const setTrip = (tripData) => {
     setTripData(tripData);
   }
+
+  const resetData = () => {
+    setFormData(initialFormData);
+    setTripData({});
+  };
 
   return (
     <Router>
@@ -43,6 +51,7 @@ function App() {
                 updateFormData={updateFormData}
                 setTrip={setTrip}
                 tripData={tripData}
+                resetData={resetData}
               />
             }
             />
@@ -58,9 +67,13 @@ function App() {
                 formData={formData}
                 updateFormData={updateFormData}
                 tripData={tripData}
+                setTripList={setTripList}
               />
             } />
-            <Route path="/calendar" element={<MyCalendar />} />
+            <Route path="/calendar" element={
+              <MyCalendar
+                tripList={tripList}
+              />} />
           </Routes>
         </div>
         <Footer />

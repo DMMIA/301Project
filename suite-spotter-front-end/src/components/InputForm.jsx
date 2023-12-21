@@ -6,7 +6,7 @@ export default function InputForm(props) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     const formattedValue = name.includes("Date") ? formatDate(value) : value;
-  
+
     props.updateFormData({
       ...props.formData,
       [name]: formattedValue,
@@ -21,36 +21,39 @@ export default function InputForm(props) {
 
   return (
     <Form className="inputForm-section app-section">
-      <Form.Group controlId="numberOfGuests">
-        <Form.Label>Number of Guests</Form.Label>
-        <Form.Control
-          type="number"
-          placeholder="Enter number of guests"
-          name="guests"
-          value={props.formData.guests || ''}
-          onChange={handleChange}
-        />
-      </Form.Group>
+      <section className="input-groups">
+        <Form.Group controlId="numberOfGuests">
+          <Form.Label>Number of Guests</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter number of guests"
+            name="guests"
+            value={props.formData.guests || ''}
+            onChange={handleChange}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="checkInDate">
-        <Form.Label>Check-In Date</Form.Label>
-        <Form.Control
-          type="date"
-          name="checkIn"
-          value={props.formData.checkIn || ''}
-          onChange={handleChange}
-        />
-      </Form.Group>
+        <Form.Group controlId="checkInDate">
+          <Form.Label>Check-In Date</Form.Label>
+          <Form.Control
+            type="date"
+            name="checkIn"
+            value={props.formData.checkIn || ''}
+            onChange={handleChange}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="checkOutDate">
-        <Form.Label>Check-Out Date</Form.Label>
-        <Form.Control
-          type="date"
-          name="checkOut"
-          value={props.formData.checkOut || ''}
-          onChange={handleChange}
-        />
-      </Form.Group>
+        <Form.Group controlId="checkOutDate">
+          <Form.Label>Check-Out Date</Form.Label>
+          <Form.Control
+            type="date"
+            name="checkOut"
+            value={props.formData.checkOut || ''}
+            onChange={handleChange}
+          />
+        </Form.Group>
+      </section>
+
     </Form>
   );
 }

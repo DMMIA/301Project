@@ -1,9 +1,6 @@
-
-import { Card, Row, Col } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 
 const BookingComponent = ({ trips }) => {
-  console.log(trips[0])
   return (
     <div>
       <Accordion defaultActiveKey="0">
@@ -12,7 +9,6 @@ const BookingComponent = ({ trips }) => {
             <Accordion.Header>{trip.destination}</Accordion.Header>
             <Accordion.Body>
               {trip.hotelData && (
-
                 <>
                   {/* <strong>Hotel:</strong> {trip.hotel}
 <br /> */}
