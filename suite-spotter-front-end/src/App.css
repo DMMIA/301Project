@@ -68,3 +68,12 @@ p {
   justify-content: center;
 }
 
+/* Add the content for About.css below this line */
+.container {
+  text-align: center; /* Center align the content */
+}
+
+.team-mission {
+  color: var(--earth-brown); /* Use the Earth Brown color variable */
+  /* Add other styles for the header */
+}
