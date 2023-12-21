@@ -1,13 +1,9 @@
-
 import axios from 'axios';
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion'
 
-
 const BookingComponent = ({ trips, onDeleteTrip }) => {
-
   const SERVER = import.meta.env.VITE_SERVER_URL;
-
   const handleDeleteTrip = async (index) => {
     try {
       const tripToDelete = trips[index];
@@ -30,7 +26,6 @@ const BookingComponent = ({ trips, onDeleteTrip }) => {
             </Accordion.Header>
             <Accordion.Body>
               {trip.hotelData && (
-
                 <>
 
                   {trip.airportData && (

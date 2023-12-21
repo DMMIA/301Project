@@ -23,10 +23,6 @@ export default function AccordionSection(props) {
     }));
   }
 
-  const showAlert = () => {
-    alert(JSON.stringify(collectedData));
-  }
-
   return (
     <Accordion defaultActiveKey="0" className="accordion-section app-section">
       <Row>
@@ -77,8 +73,10 @@ export default function AccordionSection(props) {
             </Card.Header>
             <Card.Body>
               <Submission
-                showAlert={showAlert}
-                onClick={() => setCollectedData('')}
+                onClick={() => {
+                  setCollectedData('')
+                  props.resetData();
+                }}
                 formData={props.formData}
                 updateFormData={props.updateFormData}
                 tripData={props.tripData}

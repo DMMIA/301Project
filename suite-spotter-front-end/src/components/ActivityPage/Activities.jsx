@@ -42,8 +42,8 @@ const Activities = (props) => {
         if (lat && long && checkIn) {
           await getWeatherFromSearch(long, lat, checkIn, checkOut);
         }
-        // getRestaurantFromSearch(searchQuery);
-        // getEntertainmentFromSearch(searchQuery);
+        getRestaurantFromSearch();
+        getEntertainmentFromSearch();
 
       } catch (error) {
         console.error('Error fetching data', error);
@@ -57,31 +57,31 @@ const Activities = (props) => {
   async function getWeatherFromSearch(long, lat, checkIn, checkOut) {
     const localApi = `${SERVER}`;
     console.log('local API', localApi);
-    const response = await axios.get(`http://localhost:3001/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
-    console.log(response.data.data, 'weather response');
-    setWeatherData(response.data.data);
+    const response = await axios.get(`http://localhost:3000/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
+    console.log(response.data, 'weather response');
+    setWeatherData(response.data);
 
   }
 
-  async function getRestaurantFromSearch(searchQuery) {
+  async function getRestaurantFromSearch() {
     try {
       const localApi = `${SERVER}`;
-      const response = await axios.get(`${localApi}/food?searchQuery=${searchQuery}`);
+      const response = await axios.get(`${localApi}/food`);
       console.log('API Response for Restaurants:', response.data);
       const restaurantData = response.data;
 
       setRestaurantData(restaurantData.map((restaurant, index) => ({ ...restaurant, id: index })));
-      console.log('movie data', response.data);
+      console.log('restaurant', response.data);
     } catch (error) {
       console.error('Error fetching movie data:', error.message);
     }
   }
 
-  async function getEntertainmentFromSearch(searchQuery) {
+  async function getEntertainmentFromSearch() {
     try {
       const localApi = `${SERVER}`;
-      const response = await axios.get(`${localApi}/poi?searchQuery=${searchQuery}`);
-      console.log('API Response for Restaurants:', response.data);
+      const response = await axios.get(`${localApi}/poi`);
+      console.log('API Response for entertainment:', response.data);
       const entertainmentData = response.data;
 
       setEntertainmentData(entertainmentData.map((entertainment, index) => ({ ...entertainment, id: index })));
@@ -94,20 +94,16 @@ const Activities = (props) => {
 
   return (
     <Container className="mt-4">
-      <h1>Local Information</h1>
+      <Card.Title>Local Information</Card.Title>
       <Row>
         <Col md={4}>
           <Card style={{ width: '18rem' }}>
             <Card.Body>
 
               <Card.Title>Weather</Card.Title>
-              <Card.Text>
-                {weatherData ? (
+             
                   <Weather weatherData={weatherData} />
-                ) : (
-                  <p>Loading weather data...</p>
-                )}
-              </Card.Text>
+                
             </Card.Body>
           </Card>
         </Col>
@@ -115,14 +111,15 @@ const Activities = (props) => {
           <Card style={{ width: '18rem' }}>
             <Card.Body>
               <Card.Title>Local Restaurants</Card.Title>
-              <ListGroup variant="flush">
+               <ListGroup variant="flush">
                 {restaurantData ? (
-                  restaurantData.map((restaurant, index) => (
-                    <ListGroup.Item key={index}>{restaurant.name}</ListGroup.Item>
-                  ))
-                ) : (
-                  <p>Loading restaurant data...</p>
-                )}
+                  restaurantData.map((restaurant, index) => ( 
+                    <RestaurantList
+                     key={index} restaurant={restaurant} />
+                   ))
+                ) : ( 
+                  <><h1>Loading restaurant data...</h1></>
+                 )} 
               </ListGroup>
             </Card.Body>
           </Card>
@@ -130,14 +127,14 @@ const Activities = (props) => {
         <Col md={4}>
           <Card style={{ width: '18rem' }}>
             <Card.Body>
-              <Card.Title>Entertainment</Card.Title>
+              <Card.Title>Places to visit nearby</Card.Title>
               <ListGroup variant="flush">
                 {entertainmentData ? (
-                  entertainmentData.map((event, index) => (
-                    <Entertainment key={index} event={event} />
+                  entertainmentData.map((entertainment, index) => (
+                    <Entertainment entertainment={entertainment}key={index} />
                   ))
                 ) : (
-                  <p>Loading entertainment data...</p>
+                  <Card.Title>Loading entertainment data...</Card.Title>
                 )}
               </ListGroup>
             </Card.Body>

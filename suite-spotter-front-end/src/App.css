@@ -84,20 +84,22 @@ p {
   border-radius: 5px;
   margin: 0 5px 0 5px;
   transition: background-color 0.3s, transform 0.3s;
+  color: var(--earth-brown);
 }
 
 .nav-buttons .navbar-collapse .navbar-nav>*:hover {
   background-color: #7a9c69;
   transform: translate(-1px, 1px);
+  color: var(--soft-ivory);
 }
 
-.auth-button {
+.navbar-collapse .navbar-nav .auth-button {
   background-color: var(--earth-brown);
-
+  color: var(--soft-ivory);
 }
 
-.auth-button:focus,
-.auth-button:hover {
+.nav-buttons .navbar-collapse .navbar-nav .auth-button:focus,
+.nav-buttons .navbar-collapse .navbar-nav .auth-button:hover {
   border-color: var(--sage-green);
 }
 
@@ -107,6 +109,7 @@ p {
 
 .main .app-section {
   padding: 20px;
+  margin: 20px 20px 20px 20px;
 }
 
 .about-background {
@@ -130,7 +133,7 @@ p {
   padding: 8px 20px 8px 20px;
   border-radius: 10px;
   margin: clamp(20px, 5%, 40px) 0;
-  font-size: clamp(1rem, 1vw, 1.5rem);
+  font-size: clamp(1rem, 5%, 1.5rem);
 }
 
 .location-section {
@@ -150,8 +153,8 @@ p {
 
 .location-form button {
   margin-top: 10px;
-  background-color: var(--sage-green);
-  border-color: var(--sage-green);
+  background-color: var(--earth-brown);
+  border-color: var(--earth-brown);
 }
 
 .location-form button:hover {
@@ -175,19 +178,52 @@ p {
   background-color: var(--soft-blue-gray);
 }
 
-.inputForm-section div {
-  width: 90%;
+.input-groups {
+  width: 80%;
   margin: auto;
+  background-color: var(--soft-ivory);
+  padding: 20px 30px 20px 30px;
+  border-radius: 20px;
 }
 
 .big-calendar {
-  background-color: var(--soft-ivory);
+  background-color: var(--beige-thing);
   padding: 20px;
   border-radius: 20px;
 }
 
+.rbc-off-range-bg {
+  background-color: rgb(230, 230, 199);
+}
+.rbc-btn-group button:hover, .rbc-btn-group .rbc-active {
+  background-color: rgb(230, 230, 199);
+}
+
 .accordion-section {
   background-color: var(--soft-blue-gray);
+}
+
+.flight-form div {
+  margin: 10px 5px 0 5px;
+}
+.flight-form div .form-label {
+  margin-left: 10px;
+}
+
+.trip-submit-btns {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.submission-btn {
+  margin: 10px 5px 10px 5px;
+  background-color: var(--earth-brown);
+  border-color: var(--earth-brown);
+}
+
+.submission-btn:hover {
+  background-color: var(--sage-green);
+  border-color: var(--sage-green);
 }
 
 .app-footer {
@@ -196,11 +232,12 @@ p {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: var(--sage-green);
+  background-color: var(--beige-thing);
+  color: var(--earth-brown);
 }
 
 .app-footer a {
   text-decoration: none;
-  color: black;
+  color: var(--earth-brown);
   padding: 5px;
 }

@@ -78,8 +78,6 @@ export default function Location(props) {
               <Card.Img
                 variant='bottom'
                 src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${props.formData.locationData.lat},${props.formData.locationData.long}&zoom=12`}
-                style={{ width: '30vw', height: '30vw' }}
-                className=''
               />
             </Card.Body>
           </Card>

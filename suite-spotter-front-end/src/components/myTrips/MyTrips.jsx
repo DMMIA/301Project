@@ -2,12 +2,9 @@ import { useState, useEffect } from 'react';
 import BookingComponent from './BookingComponent';
 import axios from 'axios';
 
-const MyTrips = ({ formData, updateFormData, tripData, submitState, setSubmitState }) => {
+const MyTrips = ({ setTripList }) => {
   const SERVER = import.meta.env.VITE_SERVER_URL;
-
   const [trips, setTrips] = useState([]);
-  const [submit, setSubmit] = useState(submitState);
-
 
   useEffect(() => {
    
@@ -23,11 +20,9 @@ const MyTrips = ({ formData, updateFormData, tripData, submitState, setSubmitSta
 
   async function getTrips() {
     try {
-      const apiUrl = `${SERVER}/trips`;
-      console.log('API URL:', apiUrl);
       const response = await axios.get(`${SERVER}/trips`);
       setTrips(response.data);
-      console.log(response.data);
+      setTripList(response.data);
     } catch (error) {
       console.error(error.message);
     }
