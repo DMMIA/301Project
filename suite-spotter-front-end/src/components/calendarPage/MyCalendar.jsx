@@ -11,10 +11,21 @@ function MyCalendar(props) {
     endDate: "2023-12-05",
     name: "Seattle trip"
   }];
+
+  // const [formData, setFormData] = useState({
+  //   locationData: {
+    const labels = [
+      { id: 1, name: "Personal", color: "blue" },
+      // Add more labels as needed
+  }
   const [events, setEvents] = useState(trips.map(trip => ({
     start: moment(trip.startDate).toDate(),
     end: moment(trip.endDate).toDate(),
     title: trip.name,
+    // add label
+    // label: labels.find(label => label.name === trip.label)?.color || "blue",
+    label: trip.label,
+    id: trip.id
   })));
 
   return (
