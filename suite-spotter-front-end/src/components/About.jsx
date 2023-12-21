@@ -1,7 +1,7 @@
 import image1 from '../assets/img1andrea.jpg';
 import image2 from '../assets/img2dom.jpeg';
-import image3 from '../assets/imgshin4.jpg';
-import image4 from '../assets/image3.jpg';
+import image3 from '../assets/img4shin.jpg';
+import image4 from '../assets/img3mike.jpg';
 import image5 from '../assets/img5myyela.jpeg';
 import './About.css'
 
