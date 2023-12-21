@@ -11,7 +11,7 @@ function About() {
       <h1 className="team-mission">Our Mission</h1> <p>mission statement or what we decide to put here.</p>
 
       {/* Member 1 */}
-      <div className="member">
+      <div className="members2">
         <img src={image1} alt="Andrea Thiel" />
         <h2>Andrea Thiel</h2>
         <div className="links">
@@ -21,7 +21,7 @@ function About() {
       </div>
 
       {/* Member 2 */}
-      <div className="member">
+      <div className="members2">
         <img src={image2} alt="Dominique McClaney" />
         <h2>Dominique McClaney</h2>
         <div className="links">
@@ -31,7 +31,7 @@ function About() {
       </div>
 
       {/* Member 3 */}
-      <div className="member">
+      <div className="member1">
         <img src={image3} alt="Immanuel Shin" />
         <h2>Immanuel Shin</h2>
         <div className="links">
@@ -41,7 +41,7 @@ function About() {
       </div>
 
       {/* Member 4 */}
-      <div className="member">
+      <div className="members2">
         <img src={image4} alt="Michelangelo Ascalon" />
         <h2>Michelangelo Ascalon</h2>
         <div className="links">
@@ -51,7 +51,7 @@ function About() {
       </div>
 
       {/* Member 5 */}
-      <div className="member">
+      <div className="members2">
         <img src={image5} alt="Myyela Isaac" />
         <h2>Myyela Isaac</h2>
         <div className="links">
