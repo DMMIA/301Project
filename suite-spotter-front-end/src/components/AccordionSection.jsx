@@ -44,7 +44,8 @@ export default function AccordionSection(props) {
             <Accordion.Header>Flight</Accordion.Header>
             <Accordion.Body>
               <Flight
-                updateAirportData={props.updateAirportData}
+                formData={props.formData}
+                updateFormData={props.updateFormData}
                 updateTrips={(data) => updateTrips('flight', data)}
               />
             </Accordion.Body>
@@ -57,12 +58,12 @@ export default function AccordionSection(props) {
             <Accordion.Header>Car Rental</Accordion.Header>
             <Accordion.Body>
               <CarRental
-                latitude={props.locationData.lat}
-                longitude={props.locationData.long}
-                iataCode={props.locationData.iataCode}
-                countryCode={props.locationData.countryCode}
-                guests={props.guests}
-                checkIn={props.checkIn}
+                latitude={props.formData.locationData.lat}
+                longitude={props.formData.locationData.long}
+                iataCode={props.formData.locationData.iataCode}
+                countryCode={props.formData.locationData.countryCode}
+                guests={props.formData.guests}
+                checkIn={props.formData.checkIn}
                 updateTrips={(data) => updateTrips('carRental', data)}
               />
             </Accordion.Body>
