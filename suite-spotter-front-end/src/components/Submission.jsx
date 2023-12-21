@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 export default function Submission({formData, tripData, onClick, showAlert, beamData}) {
-  const SERVER = import.meta.env.VITE_SERVER_URL
+  const SERVER = import.meta.env.VITE_SERVER_URL;
   const addTrip = async () => {
     console.log('adding');
     try {

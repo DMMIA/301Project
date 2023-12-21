@@ -17,8 +17,6 @@ const MyTrips = ({ formData, updateFormData, tripData, submitState, setSubmitSta
       console.error(error.message);
     }
   }
-
-
   const clearTrips = () => {
     setTrips([]);
   };
