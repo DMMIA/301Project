@@ -9,50 +9,53 @@ export default function Hotel({ latitude, longitude, guests, checkIn, checkOut, 
   useEffect(() => {
     const fetchHotelData = async () => {
       try {
-        const response = await axios.get(`${SERVER}/rooms`, {
-          params: {
-            latitude,
-            longitude,
-            guests,
-            checkIn,
-            checkOut,
-          },
-        });
-        const extractedData = response.data.rooms[0].offers.map(room => {
-          const bedType = room.room.typeEstimated.bedType;
-          const beds = room.room.typeEstimated.beds;
-          const currency = room.price.currency;
-          const total = room.price.base;
-
-          return {
-            beds,
-            bedType,
-            price: {
-              currency,
-              total,
+        if (latitude && longitude) {
+          const response = await axios.get(`${SERVER}/rooms`, {
+            params: {
+              latitude,
+              longitude,
+              guests,
+              checkIn,
+              checkOut,
             },
-          };
-        });
+          });
 
-        setHotelData(extractedData);
+          const extractedData = response.data.rooms[0].offers.map(room => {
+            const bedType = room.room.typeEstimated.bedType;
+            const beds = room.room.typeEstimated.beds;
+            const currency = room.price.currency;
+            const total = room.price.base;
+
+            return {
+              beds,
+              bedType,
+              price: {
+                currency,
+                total,
+              },
+            };
+          });
+
+          setHotelData(extractedData);
+        }
       } catch (error) {
         console.error(error.message);
       }
     };
     fetchHotelData();
   }, [latitude, longitude, guests, checkIn, checkOut]);
-  
+
   const handleButtonClick = (data) => {
     const newTrip = {
       data: data,
     };
     updateTrips(newTrip);
   };
- 
+
 
   return (
     <>
-    {hotelData && (
+      {hotelData && (
         <Carousel>
           {hotelData.map((data, index) => (
             <Carousel.Item key={index}>

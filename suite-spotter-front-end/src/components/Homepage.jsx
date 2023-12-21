@@ -1,19 +1,11 @@
-import Footer from './Footer';
 import InputForm from './InputForm';
 import AccordionSection from './AccordionSection';
 import Location from './Location';
 
-export default function Homepage({ formData, updateFormData, setTrip, setSubmitState, tripData }) {
-
-  const showAlert = () => {
-    // Display an alert with all the state data
-    alert(JSON.stringify(tripData));
-    alert(JSON.stringify(formData));
-  };
+export default function Homepage({ formData, updateFormData, setTrip, resetData, tripData }) {
 
   return (
     <>
-      <button onClick={showAlert}>Show State Data</button>
       <Location
         formData={formData}
         updateFormData={updateFormData}
@@ -27,9 +19,8 @@ export default function Homepage({ formData, updateFormData, setTrip, setSubmitS
         updateFormData={updateFormData}
         tripData={tripData}
         setTrip={setTrip}
-        setSubmitState={setSubmitState}
+        resetData={resetData}
       />
-      <Footer />
     </>
   );
 
