@@ -8,6 +8,12 @@ const MyTrips = ({ formData, updateFormData, tripData, submitState, setSubmitSta
   const [trips, setTrips] = useState([]);
   const [submit, setSubmit] = useState(submitState);
 
+
+  useEffect(() => {
+   
+    getTrips();
+  }, []); 
+
   async function getTrips() {
     try {
       const apiUrl = `${SERVER}/trips`;
