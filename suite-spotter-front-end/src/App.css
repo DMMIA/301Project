@@ -6,6 +6,7 @@
   --muted-gray: #A0A0A0;
   --earth-brown: #755E48;
   --soft-blue-gray: #6AA7B2;
+  --beige-thing: #f5f5dc;
 }
 
 #root {
@@ -20,7 +21,7 @@
 }
 
 body {
-  background-color: var(--soft-ivory);
+  background-color: var(--sage-green);
   width: 100%;
 }
 
@@ -68,7 +69,7 @@ p {
 }
 
 .app-header {
-  background-color: var(--sage-green);
+  background-color: var(--beige-thing);
 }
 
 .app-header .navbar {
@@ -101,7 +102,11 @@ p {
 }
 
 .main {
-  background-color: #467d83;
+  background-color: var(--beige-thing);
+}
+
+.main .app-section {
+  padding: 20px;
 }
 
 .about-background {
@@ -124,13 +129,14 @@ p {
 .app-section {
   padding: 8px 20px 8px 20px;
   border-radius: 10px;
-  margin: clamp(60px, 5%, 100px) 0;
+  margin: clamp(20px, 5%, 40px) 0;
   font-size: clamp(1rem, 1vw, 1.5rem);
 }
 
 .location-section {
   display: flex;
   justify-content: space-between;
+  background-color: var(--soft-blue-gray);
 }
 
 .location-form {
@@ -166,7 +172,7 @@ p {
 .inputForm-section {
   background-color: var(--soft-ivory);
   padding: 20px;
-  margin: 0 20px 0 20px;
+  background-color: var(--soft-blue-gray);
 }
 
 .inputForm-section div {
@@ -178,6 +184,10 @@ p {
   background-color: var(--soft-ivory);
   padding: 20px;
   border-radius: 20px;
+}
+
+.accordion-section {
+  background-color: var(--soft-blue-gray);
 }
 
 .app-footer {

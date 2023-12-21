@@ -29,7 +29,6 @@ function MyCalendar(props) {
         selectable
         resizable
         onSelectSlot={(slotInfo) => alert(`You selected slot: ${slotInfo}`)}
-        // other event handlers
       />
     </div>
   );
