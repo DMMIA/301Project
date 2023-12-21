@@ -1,13 +1,13 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const Weather = (weatherData) => {
+const Weather = ({weatherData}) => {
   if(!weatherData) {
     return null;
   }
    return (
     <ListGroup>
       <ListGroup.Title>Weather</ListGroup.Title>
-      {weatherData.data.map((day, index) => (
+      {weatherData && weatherData.map((day, index) => (
         <ListGroup.Item key={index}>
           <strong>Date:</strong> {day.valid_date}<br />
           <strong>High Temp:</strong> {day.max_temp}&deg;C<br />
