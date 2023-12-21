@@ -58,8 +58,8 @@ const Activities = (props) => {
     const localApi = `${SERVER}`;
     console.log('local API', localApi);
     const response = await axios.get(`http://localhost:3000/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
-    console.log(response.data.data, 'weather response');
-    setWeatherData(response.data.data);
+    console.log(response.data, 'weather response');
+    setWeatherData(response.data);
 
   }
 
@@ -94,20 +94,16 @@ const Activities = (props) => {
 
   return (
     <Container className="mt-4">
-      <h1>Local Information</h1>
+      <Card.Title>Local Information</Card.Title>
       <Row>
         <Col md={4}>
           <Card style={{ width: '18rem' }}>
             <Card.Body>
 
               <Card.Title>Weather</Card.Title>
-              <Card.Text>
-                {weatherData ? (
+             
                   <Weather weatherData={weatherData} />
-                ) : (
-                  <p>Loading weather data...</p>
-                )}
-              </Card.Text>
+                
             </Card.Body>
           </Card>
         </Col>
@@ -115,15 +111,15 @@ const Activities = (props) => {
           <Card style={{ width: '18rem' }}>
             <Card.Body>
               <Card.Title>Local Restaurants</Card.Title>
-              <ListGroup variant="flush">
+               <ListGroup variant="flush">
                 {restaurantData ? (
-                  restaurantData.map((restaurant, index) => (
-                    <RestaurantList restaurantData={restaurantData} 
-                     key={index} />
-                  ))
-                ) : (
-                  <p>Loading restaurant data...</p>
-                )}
+                  restaurantData.map((restaurant, index) => ( 
+                    <RestaurantList
+                     key={index} restaurant={restaurant} />
+                   ))
+                ) : ( 
+                  <><h1>Loading restaurant data...</h1></>
+                 )} 
               </ListGroup>
             </Card.Body>
           </Card>
@@ -131,14 +127,14 @@ const Activities = (props) => {
         <Col md={4}>
           <Card style={{ width: '18rem' }}>
             <Card.Body>
-              <Card.Title>Entertainment</Card.Title>
+              <Card.Title>Places to visit nearby</Card.Title>
               <ListGroup variant="flush">
                 {entertainmentData ? (
-                  entertainmentData.map((event, index) => (
-                    <Entertainment entertainmentData={entertainmentData}key={index} event={event} />
+                  entertainmentData.map((entertainment, index) => (
+                    <Entertainment entertainment={entertainment}key={index} />
                   ))
                 ) : (
-                  <p>Loading entertainment data...</p>
+                  <Card.Title>Loading entertainment data...</Card.Title>
                 )}
               </ListGroup>
             </Card.Body>
