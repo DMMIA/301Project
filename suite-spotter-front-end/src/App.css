@@ -22,6 +22,8 @@ body {
   padding: 20px;
   margin-bottom: 20px;
   text-align: center;
+  width: 250px;
+  margin: 10px;
 }
 
 .member img {
@@ -30,3 +32,39 @@ body {
   object-fit: cover;
   border-radius: 50%;
 }
+
+.links a {
+  display: inline-block;
+  margin: 5px;
+  padding: 8px 12px;
+  border: 2px solid var(--earth-brown);
+  border-radius: 5px;
+  color: var(--earth-brown);
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.links a:hover {
+  background-color: var(--earth-brown);
+  color: var(--soft-ivory);
+}
+
+h1,
+h2,
+p {
+  color: var(--earth-brown);
+}
+
+.about-background {
+  background-color: var(--soft-blue-gray);
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.members-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
