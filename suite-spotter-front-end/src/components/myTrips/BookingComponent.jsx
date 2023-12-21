@@ -8,7 +8,7 @@ const BookingComponent = ({ trips }) => {
     <div>
       <Accordion defaultActiveKey="0">
         {trips.map((trip, index) => (
-          <Accordion.Item key={index} eventKey={`${index}`}>
+          <Accordion.Item key={index} eventKey={index}>
             <Accordion.Header>{trip.destination}</Accordion.Header>
             <Accordion.Body>
               {trip.hotelData && (

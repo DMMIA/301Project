@@ -1,4 +1,3 @@
-import Footer from './Footer';
 import InputForm from './InputForm';
 import AccordionSection from './AccordionSection';
 import Location from './Location';
@@ -29,7 +28,7 @@ export default function Homepage({ formData, updateFormData, setTrip, setSubmitS
         setTrip={setTrip}
         setSubmitState={setSubmitState}
       />
-      <Footer />
+      
     </>
   );
 

@@ -52,7 +52,7 @@ export default function Location(props) {
   }
 
   return (
-    <>
+    <section className="location-section app-section">
       <Form className="location-form" onSubmit={handleLocation}>
         <Form.Group controlId='locationForm'>
           <Form.Label>Find a city</Form.Label>
@@ -69,21 +69,11 @@ export default function Location(props) {
       {(formSubmitted || props.formData.locationData.location) && (
         <>
           <Card
-            style={{ width: '40vw' }}
             className='city-card'
           >
             <Card.Body>
               <div className='card-text-container'>
-                <Card.Title>{fullLocation}</Card.Title>
-                <Card.Text>
-                  Lat: {props.formData.locationData.lat}
-                </Card.Text>
-                <Card.Text>
-                  Long: {props.formData.locationData.long}
-                </Card.Text>
-                <Card.Text>
-                  {props.formData.locationData.iataCode}, {props.formData.locationData.countryCode}
-                </Card.Text>
+                <Card.Title>{props.formData.locationData.setFullLocation}</Card.Title>
               </div>
               <Card.Img
                 variant='bottom'
@@ -95,7 +85,7 @@ export default function Location(props) {
           </Card>
         </>
       )}
-    </>
+    </section>
 
   )
 }
