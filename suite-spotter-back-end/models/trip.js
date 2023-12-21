@@ -6,25 +6,24 @@ const tripSchema = new mongoose.Schema({
     required: true,
   },
   locationData: {
-    type: {
-      latitude: {
-        type: Number,
-        required: true,
-      },
-      longitude: {
-        type: Number,
-        required: true,
-      },
-      iataCode: {
-        type: String,
-        required: true,
-      },
-      countryCode: {
-        type: String,
-        required: true,
-      },
+    location: String,
+    setFullLocation: String,
+    lat: {
+      type: Number,
+      required: true,
     },
-    required: true,
+    long: {
+      type: Number,
+      required: true,
+    },
+    iataCode: {
+      type: String,
+      required: true,
+    },
+    countryCode: {
+      type: String,
+      required: true,
+    },
   },
   guests: {
     type: Number,
@@ -42,18 +41,24 @@ const tripSchema = new mongoose.Schema({
     startingAirport: String,
     endingAirport: String,
     price: Number,
+    currency: String,
     flightNumber: String,
     startDate: Date,
     endDate: Date,
+    duration: String,
   },
   carRentalData: {
     provider: String,
+    description: String,
+    imageURL: String,
     seats: Number,
     price: Number,
+    currency: String,
   },
   hotelData: {
     beds: Number,
     price: Number,
+    currency: String,
   },
   restaurantData: {
     name: String,

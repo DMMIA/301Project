@@ -15,7 +15,7 @@ function App() {
     guests: 1,
     checkIn: null,
     checkOut: null,
-    airportData: false,
+    airportData: '',
   });
   const [tripData, setTripData] = useState('');
 
@@ -40,6 +40,7 @@ function App() {
               formData={formData}
               updateFormData={updateFormData}
               setTrip={setTrip}
+              tripData={tripData}
             />
           }
           />

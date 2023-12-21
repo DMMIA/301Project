@@ -17,9 +17,6 @@ export default function Flight({ formData, updateFormData, updateTrips }) {
   const SERVER = import.meta.env.VITE_SERVER_URL
   const handleFlightSearch = async () => {
     try {
-      console.log('Start Airport:', startAirport);
-      console.log('End Airport:', endAirport);
-
       const response = await axios.get(`${SERVER}/planes`, {
         params: {
           startAirport,
@@ -34,7 +31,7 @@ export default function Flight({ formData, updateFormData, updateTrips }) {
       updateFormData({
         airportData: {
           startAirport,
-          endAirport
+          endAirport,
         }
       });
     } catch (error) {
