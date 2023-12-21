@@ -1,0 +1,12 @@
+.container {
+    background-color:beige;
+}
+
+.members2 {
+    display:flex
+}
+
+.member1 {
+    display:flex;
+    justify-content:center;
+}

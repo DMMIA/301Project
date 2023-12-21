@@ -1,14 +1,15 @@
 import image1 from '../assets/img1andrea.jpg';
 import image2 from '../assets/img2dom.jpeg';
-import image3 from '../assets/image3.jpg';
-import image4 from '../assets/imgshin4.jpg';
+import image3 from '../assets/imgshin4.jpg';
+import image4 from '../assets/image3.jpg';
 import image5 from '../assets/img5myyela.jpeg';
+import './About.css'
 
 function About() {
   return (
     <div className="container">
       <h1>About Us</h1>
-
+<div className= "members2">
       {/* Member 1 */}
       <div className="member">
         <img src={image1} alt="Andrea Thiel" />
@@ -30,7 +31,9 @@ function About() {
           <a href="https://www.linkedin.com/in/dominique-mcclaney/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
+      </div>
 
+      <div className="member1">
       {/* Member 3 */}
       <div className="member">
         <img src={image3} alt="Immanuel Shin" />
@@ -41,7 +44,9 @@ function About() {
           <a href="https://www.linkedin.com/in/immanuel-shin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
+      </div>
 
+      <div className= "members2">
       {/* Member 4 */}
       <div className="member">
         <img src={image4} alt="Michelangelo Ascalon" />
@@ -63,7 +68,7 @@ function About() {
           <a href="https://www.linkedin.com/in/myyela-isaac/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
-
+</div>
     </div>
   );
 }
