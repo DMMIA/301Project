@@ -42,8 +42,8 @@ const Activities = (props) => {
         if (lat && long && checkIn) {
           await getWeatherFromSearch(long, lat, checkIn, checkOut);
         }
-        // getRestaurantFromSearch(searchQuery);
-        // getEntertainmentFromSearch(searchQuery);
+        getRestaurantFromSearch();
+        getEntertainmentFromSearch();
 
       } catch (error) {
         console.error('Error fetching data', error);
@@ -57,31 +57,31 @@ const Activities = (props) => {
   async function getWeatherFromSearch(long, lat, checkIn, checkOut) {
     const localApi = `${SERVER}`;
     console.log('local API', localApi);
-    const response = await axios.get(`http://localhost:3001/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
+    const response = await axios.get(`http://localhost:3000/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
     console.log(response.data.data, 'weather response');
     setWeatherData(response.data.data);
 
   }
 
-  async function getRestaurantFromSearch(searchQuery) {
+  async function getRestaurantFromSearch() {
     try {
       const localApi = `${SERVER}`;
-      const response = await axios.get(`${localApi}/food?searchQuery=${searchQuery}`);
+      const response = await axios.get(`${localApi}/food`);
       console.log('API Response for Restaurants:', response.data);
       const restaurantData = response.data;
 
       setRestaurantData(restaurantData.map((restaurant, index) => ({ ...restaurant, id: index })));
-      console.log('movie data', response.data);
+      console.log('restaurant', response.data);
     } catch (error) {
       console.error('Error fetching movie data:', error.message);
     }
   }
 
-  async function getEntertainmentFromSearch(searchQuery) {
+  async function getEntertainmentFromSearch() {
     try {
       const localApi = `${SERVER}`;
-      const response = await axios.get(`${localApi}/poi?searchQuery=${searchQuery}`);
-      console.log('API Response for Restaurants:', response.data);
+      const response = await axios.get(`${localApi}/poi`);
+      console.log('API Response for entertainment:', response.data);
       const entertainmentData = response.data;
 
       setEntertainmentData(entertainmentData.map((entertainment, index) => ({ ...entertainment, id: index })));

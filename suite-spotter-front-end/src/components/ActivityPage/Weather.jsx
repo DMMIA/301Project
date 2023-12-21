@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import ListGroup from 'react-bootstrap/ListGroup';
+
 
 const Weather = ({weatherData}) => {
   if(!weatherData) {
