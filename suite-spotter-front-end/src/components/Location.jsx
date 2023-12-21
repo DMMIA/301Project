@@ -8,7 +8,6 @@ import Card from 'react-bootstrap/Card';
 const API_KEY = import.meta.env.VITE_GEO_API_KEY;
 
 export default function Location(props) {
-  console.log(props)
 
   const [location, setLocation] = useState('');
   const [fullLocation, setFullLocation] = useState('');
@@ -32,17 +31,20 @@ export default function Location(props) {
 
 
       const serverResponse = await axios.get(`${SERVER}/location?city=${city}`);
-      
+
       setIataCode(serverResponse.data[0].iataCode);
       setCountryCode(serverResponse.data[0].address.countryCode);
       setFormSubmitted(true);
 
-      props.updateLocationData({
-        
-        lat: response.data[0].lat,
-        long: response.data[0].lon,
-        iataCode: serverResponse.data[0].iataCode,
-        countryCode: serverResponse.data[0].address.countryCode,
+      props.updateFormData({
+        locationData: {
+          location: response.data[0].display_name.split(',')[0],
+          setFullLocation: response.data[0].display_name,
+          lat: response.data[0].lat,
+          long: response.data[0].lon,
+          iataCode: serverResponse.data[0].iataCode,
+          countryCode: serverResponse.data[0].address.countryCode,
+        }
       });
     } catch (error) {
       console.error(error.message);
@@ -54,13 +56,17 @@ export default function Location(props) {
       <Form className="location-form" onSubmit={handleLocation}>
         <Form.Group controlId='locationForm'>
           <Form.Label>Find a city</Form.Label>
-          <Form.Control type='text' placeholder='Enter City Name' />
+          <Form.Control 
+          type='text' 
+          placeholder='Enter City Name' 
+          defaultValue={props.formData.locationData.location || ''}
+          />
         </Form.Group>
         <Button variant='primary' type='submit'>
           Find
         </Button>
       </Form>
-      {formSubmitted && (
+      {(formSubmitted || props.formData.locationData.location) && (
         <>
           <Card
             style={{ width: '40vw' }}
@@ -70,18 +76,18 @@ export default function Location(props) {
               <div className='card-text-container'>
                 <Card.Title>{fullLocation}</Card.Title>
                 <Card.Text>
-                  Lat: {lat}
+                  Lat: {props.formData.locationData.lat}
                 </Card.Text>
                 <Card.Text>
-                  Long: {long}
+                  Long: {props.formData.locationData.long}
                 </Card.Text>
                 <Card.Text>
-                  {iataCode}, {countryCode}
+                  {props.formData.locationData.iataCode}, {props.formData.locationData.countryCode}
                 </Card.Text>
               </div>
               <Card.Img
                 variant='bottom'
-                src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${lat},${long}&zoom=12`}
+                src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${props.formData.locationData.lat},${props.formData.locationData.long}&zoom=12`}
                 style={{ width: '30vw', height: '30vw' }}
                 className=''
               />

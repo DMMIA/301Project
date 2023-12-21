@@ -1,8 +1,3 @@
-// About.jsx
-
-import React from 'react';
-import './app.css'; // Import your CSS file
-
 import image1 from '../assets/img1andrea.jpg';
 import image2 from '../assets/img2dom.jpeg';
 import image3 from '../assets/image3.jpg';
