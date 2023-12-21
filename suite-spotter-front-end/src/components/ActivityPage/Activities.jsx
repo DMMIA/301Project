@@ -118,7 +118,8 @@ const Activities = (props) => {
               <ListGroup variant="flush">
                 {restaurantData ? (
                   restaurantData.map((restaurant, index) => (
-                    <ListGroup.Item key={index}>{restaurant.name}</ListGroup.Item>
+                    <RestaurantList restaurantData={restaurantData} 
+                     key={index} />
                   ))
                 ) : (
                   <p>Loading restaurant data...</p>
@@ -134,7 +135,7 @@ const Activities = (props) => {
               <ListGroup variant="flush">
                 {entertainmentData ? (
                   entertainmentData.map((event, index) => (
-                    <Entertainment key={index} event={event} />
+                    <Entertainment entertainmentData={entertainmentData}key={index} event={event} />
                   ))
                 ) : (
                   <p>Loading entertainment data...</p>
