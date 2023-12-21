@@ -3,7 +3,7 @@ import image2 from '../assets/img2dom.jpeg';
 import image3 from '../assets/img4shin.jpg';
 import image4 from '../assets/img3mike.jpg';
 import image5 from '../assets/img5myyela.jpeg';
-import './About.css'; // Make sure to import the CSS file
+import './About.css'; 
 
 function About() {
   return (
