@@ -14,9 +14,7 @@ const SERVER = import.meta.env.VITE_SERVER_URL
 
 
 const Activities = (props) => {
-  // get the start date and end date from the form. then define it as a const. pass this data to the server through the /weather api call. (i thinkj its checkIn and checkOut)
-  // define searchQuery for axios calls
-  // make sure data mapping is working 
+ 
   const { checkIn, checkOut } = props.formData;
   console.log(checkIn, checkOut);
   const { lat, long } = props.formData.locationData || {};
@@ -28,17 +26,7 @@ const Activities = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const weatherResponse = await axios.get(`${SERVER}/weather`);
-        // console.log('Weather Response:', weatherResponse.data);
-        // setWeatherData(weatherResponse.data);
-
-        // const restaurantResponse = await axios.get(`${SERVER}/food`);
-        // console.log('food Response:', restaurantResponse.data)
-        // setRestaurantData(restaurantResponse.data);
-
-        // const entertainmentResponse = await axios.get(`${SERVER}/poi`);
-        // console.log('entertainment response:', entertainmentResponse.data)
-        // setEntertainmentData(entertainmentResponse.data);
+       
         if (lat && long && checkIn) {
           await getWeatherFromSearch(long, lat, checkIn, checkOut);
         }
