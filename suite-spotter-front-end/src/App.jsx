@@ -10,26 +10,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
-  const [locationData, setLocationData] = useState('');
+  const [formData, setFormData] = useState({
+    locationData: '',
+    guests: 2,
+    checkIn: null,
+    checkOut: null,
+    airportData: null,
+  });
+  const [tripData, setTripData] = useState('');
 
-  const [guests, setGuests] = useState(null);
-  const [checkIn, setCheckIn] = useState(null);
-  const [checkOut, setCheckOut] = useState(null);
-  const [airportData, setAirportData] = useState(null);
-  const [tripData, setTripData] = useState(null);
-
-  const updateLocationData = (newLocationData) => {
-    setLocationData(newLocationData);
-  };
-
-  const updateInputFormData = (formData) => {
-    setGuests(formData.numberOfGuests);
-    setCheckIn(formData.checkInDate);
-    setCheckOut(formData.checkOutDate);
-  };
-
-  const updateAirportData = (newAirportData) => {
-    setAirportData(newAirportData);
+  const updateFormData = (newFormData) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      ...newFormData,
+    }));
   };
 
   const setTrip = (tripData) => {
@@ -43,42 +37,23 @@ function App() {
         <Routes>
           <Route path="/" element={
             <Homepage
-              updateLocationData={updateLocationData}
-              updateInputFormData={updateInputFormData}
-              updateAirportData={updateAirportData}
-              locationData={locationData}
-              guests={guests}
-              checkIn={checkIn}
-              checkOut={checkOut}
-              airportData={airportData}
+              formData={formData}
+              updateFormData={updateFormData}
               setTrip={setTrip}
             />
           }
           />
           <Route path="/activities" element={
-            locationData &&
             <Activities
-              updateLocationData={updateLocationData}
-              updateInputFormData={updateInputFormData}
-              updateAirportData={updateAirportData}
-              locationData={locationData}
-              guests={guests}
-              checkIn={checkIn}
-              checkOut={checkOut}
-              airportData={airportData}
+              formData={formData}
+              updateFormData={updateFormData}
             />
           } />
           <Route path="/about" element={<About />} />
           <Route path="/trips" element={
             <MyTrips
-              updateLocationData={updateLocationData}
-              updateInputFormData={updateInputFormData}
-              updateAirportData={updateAirportData}
-              locationData={locationData}
-              guests={guests}
-              checkIn={checkIn}
-              checkOut={checkOut}
-              airportData={airportData}
+              formData={formData}
+              updateFormData={updateFormData}
               tripData={tripData}
             />
           } />
