@@ -8,7 +8,7 @@ import './About.css'; // Make sure to import the CSS file
 function About() {
   return (
     <div className="container">
-      <h1 className="team-mission">Team Mission</h1> {/* Changed the title here */}
+      <h1 className="team-mission">Our Mission</h1> <p>mission statement or what we decide to put here.</p>
 
       {/* Member 1 */}
       <div className="member">
