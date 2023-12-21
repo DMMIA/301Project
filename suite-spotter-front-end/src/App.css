@@ -77,3 +77,7 @@ p {
   color: var(--earth-brown); /* Use the Earth Brown color variable */
   /* Add other styles for the header */
 }
+
+.member h2 {
+  color: var(--earth-brown); 
+}
