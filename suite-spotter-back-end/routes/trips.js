@@ -19,7 +19,9 @@ router.get('/:id', getTrip, (req, res) => {
 
 // Add one
 router.post('/', async (req, res) => {
-  const trip = new Trip({});
+  console.log(req.body);
+  const trip = new Trip(req.body);
+  console.log('posting');
   try {
     const newTrip = await trip.save();
     res.status(201).json(newTrip);

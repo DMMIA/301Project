@@ -22,7 +22,6 @@ router.get('/', async (req, res) => {
       });
     }
     const response = await amadeus.shopping.transferOffers.post(JSON.stringify(body));
-    console.log(body);
     res.json(response.data);
   } catch (error) {
     console.error(error);

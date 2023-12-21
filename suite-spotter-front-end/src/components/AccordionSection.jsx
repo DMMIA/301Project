@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import CarRental from './services/CarRental';
 import Flight from './services/Flight';
 import Hotel from './services/Hotel';
+import Submission from './Submission';
 
 export default function AccordionSection(props) {
   const [collectedData, setCollectedData] = useState({});
@@ -16,14 +17,14 @@ export default function AccordionSection(props) {
       ...prevData,
       [serviceType]: data,
     }));
+    props.setTrip((prevTrip) => ({
+      ...prevTrip,
+      [serviceType]: data,
+    }));
   }
 
   const showAlert = () => {
     alert(JSON.stringify(collectedData));
-  }
-
-  const beamData = () => {
-    props.setTrip(collectedData);
   }
 
   return (
@@ -75,9 +76,13 @@ export default function AccordionSection(props) {
               <Card.Title>Trip</Card.Title>
             </Card.Header>
             <Card.Body>
-              <Button onClick={showAlert}>Show Collected Data</Button>
-              <Button onClick={()=>setCollectedData('')}>Clear Collected Data</Button>
-              <Button onClick={beamData}>Book Now!</Button>
+              <Submission
+                showAlert={showAlert}
+                onClick={() => setCollectedData('')}
+                formData={props.formData}
+                updateFormData={props.updateFormData}
+                tripData={props.tripData}
+              />
             </Card.Body>
           </Card>
         </Col>
