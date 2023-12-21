@@ -32,13 +32,10 @@ export default function Flight({ guests, checkIn, checkOut, updateAirportData,up
   };
 
   const handleButtonClick = (flight) => {
-    const newTrip = {
-      type: 'Flight',
-      data: flight,
-    };
+  
 
     // Update trips state in MyTrips component
-    updateTrips(newTrip);
+    updateTrips('flight', flights);
     
   };
   return (

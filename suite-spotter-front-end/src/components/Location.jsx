@@ -34,12 +34,13 @@ export default function Location(props) {
       setCountryCode(serverResponse.data[0].address.countryCode);
       setFormSubmitted(true);
 
-      props.updateLocationData({
+      setLocation({
         lat: response.data[0].lat,
         long: response.data[0].lon,
         iataCode: serverResponse.data[0].iataCode,
         countryCode: serverResponse.data[0].address.countryCode,
       });
+      props.updateLocationData(response.data[0])
     } catch (error) {
       console.error(error.message);
     }

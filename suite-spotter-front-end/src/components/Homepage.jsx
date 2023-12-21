@@ -9,6 +9,8 @@ export default function Homepage(props) {
     const checkIn = props.checkIn;
     const checkOut = props.checkOut;
     const airportData = props.airportData;
+    const updateTrips = props.updateTrips; 
+
 
     const showAlert = () => {
         // Display an alert with all the state data
@@ -31,6 +33,7 @@ export default function Homepage(props) {
                 checkOut={props.checkOut}
                 airportData={props.airportData}
                 updateAirportData={props.updateAirportData}
+                updateTrips={props.updateTrips}
             />
             <Footer />
         </>

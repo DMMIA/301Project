@@ -15,7 +15,7 @@ export default function AccordionSection(props) {
           <Accordion.Item eventKey="0">
             <Accordion.Header>Hotel</Accordion.Header>
             <Accordion.Body>
-              <Hotel />
+              <Hotel updateTrips={props.updateTrips}/>
             </Accordion.Body>
           </Accordion.Item>
         </Col>
@@ -25,6 +25,7 @@ export default function AccordionSection(props) {
             <Accordion.Body>
               <Flight
                 updateAirportData={props.updateAirportData}
+                updateTrips={props.updateTrips}
               />
             </Accordion.Body>
           </Accordion.Item>
@@ -35,7 +36,7 @@ export default function AccordionSection(props) {
           <Accordion.Item eventKey="2">
             <Accordion.Header>Car Rental</Accordion.Header>
             <Accordion.Body>
-              <CarRental />
+              <CarRental updateTrips={props.updateTrips}/>
             </Accordion.Body>
           </Accordion.Item>
         </Col>

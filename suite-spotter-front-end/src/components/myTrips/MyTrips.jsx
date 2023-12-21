@@ -1,22 +1,13 @@
-import { useState} from 'react';
-import BookingComponent from './BookingComponent';
+import BookingComponent from './BookingComponent'; // Adjust the path based on your actual file structure
 
-const MyTrips = () => {
-  const [trips, setTrips] = useState([]);
 
-  const updateTrips = (newTrip) => {
-    setTrips((prevTrips) => [...prevTrips, newTrip]);
-  };
-
-  const clearTrips = () => {
-    setTrips([]);
-  };
-
+const MyTrips = (props) => {
+  
   return (
     <div>
       <h1>Trip Information</h1>
-      <button onClick={clearTrips}>Clear Trips</button>
-      <BookingComponent trips={trips} />
+     <p>{JSON.stringify(props.trips)}</p>
+
     </div>
   );
 };

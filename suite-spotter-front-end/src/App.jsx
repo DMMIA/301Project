@@ -14,10 +14,12 @@ function App() {
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
   const [airportData, setAirportData] = useState(null);
+  const [trips,setTrips] = useState([]);
 
   const updateLocationData = (newLocationData) => {
     setLocationData(newLocationData);
-    console.log(newLocationData);
+    updateTrips('location',newLocationData.display_name);
+    
   };
 
   const updateInputFormData = (newGuests, newCheckIn, newCheckOut) => {
@@ -30,6 +32,14 @@ function App() {
   const updateAirportData = (newAirportData) => {
     setAirportData(newAirportData);
   };
+
+
+const updateTrips = (key, value) =>  {
+  const trip = trips[0] || {};
+  trip[key]=value;
+  setTrips([trip]) 
+}
+
 
   return (
     <Router>
@@ -46,6 +56,7 @@ function App() {
               checkIn={checkIn}
               checkOut={checkOut}
               airportData={airportData}
+              updateTrips={updateTrips}
             />
           }
           />
@@ -64,14 +75,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/trips" element={
             <MyTrips
-              updateLocationData={updateLocationData}
-              updateInputFormData={updateInputFormData}
-              updateAirportData={updateAirportData}
-              locationData={locationData}
-              guests={guests}
-              checkIn={checkIn}
-              checkOut={checkOut}
-              airportData={airportData}
+              trips={trips}
             />
           } />
         </Routes>

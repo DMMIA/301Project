@@ -28,11 +28,8 @@ export default function CarRental({ latitude, longitude, guests, checkIn, countr
   }, [latitude, longitude, guests, checkIn, countryCode, iataCode]);
 
   const handleButtonClick = (offer) => {
-    const newTrip = {
-      type: 'CarRental',
-      data: offer,
-    };
-
+   
+    updateTrips('Car Rental', offer);
   }
 
   return (
