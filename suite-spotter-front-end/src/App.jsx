@@ -12,7 +12,7 @@ import './App.css';
 function App() {
   const [formData, setFormData] = useState({
     locationData: '',
-    guests: 2,
+    guests: 1,
     checkIn: null,
     checkOut: null,
     airportData: '',
