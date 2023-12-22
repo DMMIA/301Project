@@ -1,16 +1,18 @@
 /* eslint-disable react/prop-types */
 import ListGroup from 'react-bootstrap/ListGroup';
-
+import Card from 'react-bootstrap/Card';
 
 const Weather = ({weatherData}) => {
+  console.log(weatherData)
   if(!weatherData) {
     return null;
+    
   }
    return (
     <>
     <ListGroup>
-      <ListGroup.Title>Weather</ListGroup.Title>
-      {weatherData && weatherData.map((day, index) => (
+      <Card.Title>Weather</Card.Title>
+      {weatherData && weatherData.data.map((day, index) => (
         <ListGroup.Item key={index}>
           <ListGroup.Item><strong>Date:</strong> {day.valid_date}<br /></ListGroup.Item>
           <ListGroup.Item><strong>High Temp:</strong> {day.max_temp}&deg;C<br /></ListGroup.Item>

@@ -52,8 +52,7 @@ const Activities = (props) => {
   async function getWeatherFromSearch(long, lat, checkIn, checkOut) {
     const localApi = `${SERVER}`;
     console.log('local API', localApi);
-    const response = await axios.get(`http://localhost:3001/weather?latitude=${lat}&checkIn=${checkIn}&longitude=${long}&checkOut=${checkOut}`);
-    console.log(response.data, 'weather response');
+    const response = await axios.get(`https://suite-spotter-back-end.onrender.com/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
     setWeatherData(response.data);
   }
 
@@ -61,9 +60,11 @@ const Activities = (props) => {
     try {
       const localApi = `${SERVER}`;
       const response = await axios.get(`${localApi}/food`);
+      
       const restaurantData = response.data;
 
       setRestaurantData(restaurantData.map((restaurant, index) => ({ ...restaurant, id: index })));
+      
     } catch (error) {
       console.error('Error fetching movie data:', error.message);
     }
@@ -73,9 +74,11 @@ const Activities = (props) => {
     try {
       const localApi = `${SERVER}`;
       const response = await axios.get(`${localApi}/poi`);
+      
       const entertainmentData = response.data;
 
       setEntertainmentData(entertainmentData.map((entertainment, index) => ({ ...entertainment, id: index })));
+      
     } catch (error) {
       console.error('Error fetching entertainment data:', error.message);
     }
@@ -89,10 +92,8 @@ const Activities = (props) => {
         <Col md={4}>
           <Card style={{ width: '18rem' }}>
             <Card.Body>
-
-              <Card.Title>Weather</Card.Title>
-             
-                  <Weather weatherData={weatherData} />
+             {weatherData && ( <Weather weatherData={weatherData} />)}
+                 
                 
             </Card.Body>
           </Card>
