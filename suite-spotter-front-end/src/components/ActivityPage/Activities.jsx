@@ -93,8 +93,6 @@ const Activities = (props) => {
           <Card style={{ width: '18rem' }}>
             <Card.Body>
              {weatherData && ( <Weather weatherData={weatherData} />)}
-                 
-                
             </Card.Body>
           </Card>
         </Col>
