@@ -27,6 +27,7 @@ const BookingComponent = ({ trips, onDeleteTrip }) => {
             <Accordion.Body>
               {trip.hotelData && (
                 <>
+              {trip.airportData && <h4>Flight Information: </h4>}
 
                   {trip.airportData && (
                     <>
@@ -37,6 +38,7 @@ const BookingComponent = ({ trips, onDeleteTrip }) => {
                       <strong>Return:</strong> {trip.airportData.endDate}
                       <br />
                       <strong>From:</strong> {trip.airportData.startingAirport}
+                      <br />
                       <strong>  Arrive:</strong> {trip.airportData.endingAirport}
                       <br />
                       <strong>Price</strong> {`${trip.airportData.price}${trip.airportData.currency}`}
@@ -44,7 +46,8 @@ const BookingComponent = ({ trips, onDeleteTrip }) => {
 
                     </>
                   )}
-
+              {trip.hotelData && <h4>Hotel Booking Information: </h4>}
+             
 
                   {/* <strong>Hotel:</strong> {trip.hotel}
 <br /> */}
@@ -56,7 +59,7 @@ const BookingComponent = ({ trips, onDeleteTrip }) => {
                   <br />
                   <strong>Price:</strong> {`${trip.hotelData.price} ${trip.hotelData.currency}`}
                   <br />
-
+                  {trip.carRentalData && <h4>Car Rental Information: </h4>}
                   {trip.carRentalData && (
                     <>
                       <strong>Car Rental:</strong> {trip.carRentalData.provider}
