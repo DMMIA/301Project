@@ -49,9 +49,9 @@ const Activities = (props) => {
   }, [long, lat, checkIn, checkOut]);
 
 
-  async function getWeatherFromSearch(long, lat, checkIn, checkOut) {
+  async function getWeatherFromSearch() {
     const localApi = `${SERVER}`;
-    console.log('local API', localApi);
+    console.log(`https://suite-spotter-back-end.onrender.com/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
     const response = await axios.get(`https://suite-spotter-back-end.onrender.com/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
     setWeatherData(response.data);
   }
