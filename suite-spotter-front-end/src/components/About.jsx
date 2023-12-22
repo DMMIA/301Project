@@ -12,7 +12,7 @@ function About() {
 <div className= "members2">
       {/* Member 1 */}
       <div className="member">
-        <img src={image1} alt="Andrea Thiel" />
+        <img src={image1} alt="Andrea   Thiel" />
         <h2>Andrea Thiel</h2>
         <p>Software Developer</p>
         <div className="links">
@@ -60,7 +60,7 @@ function About() {
 
       {/* Member 5 */}
       <div className="member">
-        <img src={image5} alt="Myyela Isaac" />
+        <img src={image5} alt="Myyela   Isaac" />
         <h2>Myyela Isaac</h2>
         <p>Software Developer</p>
         <div className="links">
