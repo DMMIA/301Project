@@ -27,8 +27,9 @@ body {
 
 .container {
   padding: 20px;
-    text-align: center; 
+  text-align: center;
 }
+
 .members-container {
   display: flex;
   flex-wrap: wrap;
@@ -36,12 +37,13 @@ body {
 }
 
 .team-mission {
-  color: var(--earth-brown); 
+  color: var(--earth-brown);
 }
 
 .member h2 {
-  color: var(--earth-brown); 
+  color: var(--earth-brown);
 }
+
 .member {
   background-color: var(--sage-green);
   border: 2px solid var(--muted-gray);
@@ -204,7 +206,9 @@ p {
 .rbc-off-range-bg {
   background-color: rgb(230, 230, 199);
 }
-.rbc-btn-group button:hover, .rbc-btn-group .rbc-active {
+
+.rbc-btn-group button:hover,
+.rbc-btn-group .rbc-active {
   background-color: rgb(230, 230, 199);
 }
 
@@ -215,6 +219,7 @@ p {
 .flight-form div {
   margin: 10px 5px 0 5px;
 }
+
 .flight-form div .form-label {
   margin-left: 10px;
 }
@@ -233,6 +238,14 @@ p {
 .submission-btn:hover {
   background-color: var(--sage-green);
   border-color: var(--sage-green);
+}
+
+.carousel-indicators {
+  display: none;
+}
+
+.carousel-item {
+  text-align: center;
 }
 
 .app-footer {
