@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import MyTrips from './components/myTrips/MyTrips';
 import About from './components/About';
@@ -38,6 +38,10 @@ function App() {
     setFormData(initialFormData);
     setTripData({});
   };
+  
+  useEffect(() => {
+    document.title = "Suite Spotter"
+ }, []);
 
   return (
     <Router>
