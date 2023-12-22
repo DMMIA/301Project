@@ -81,7 +81,7 @@ export default function Flight({ formData, updateFormData, updateTrips }) {
             <p>Arrival Time: {flight.itineraries[0].segments.slice(-1)[0].arrival.at}</p>
             <p>Number of Stops: {flight.itineraries[0].segments.length - 1}</p>
             <p>Cabin: {flight.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
-            <Button onClick={() => handleButtonClick(flight)}>Add to My Trips</Button>
+            <Button className='submission-btn' onClick={() => handleButtonClick(flight)}>Add to My Trips</Button>
           </Carousel.Item>
         ))}
       </Carousel>

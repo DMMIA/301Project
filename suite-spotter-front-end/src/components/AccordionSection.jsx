@@ -32,6 +32,11 @@ export default function AccordionSection(props) {
             <Accordion.Body>
               <Hotel
                 updateTrips={(data) => updateTrips('hotel', data)}
+                latitude={props.formData.locationData.lat}
+                longitude={props.formData.locationData.long}
+                guests={props.formData.guests}
+                checkIn={props.formData.checkIn}
+                checkout={props.formData.checkOut}
               />
             </Accordion.Body>
           </Accordion.Item>
