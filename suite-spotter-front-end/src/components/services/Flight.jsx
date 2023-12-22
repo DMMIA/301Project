@@ -53,7 +53,7 @@ export default function Flight({ formData, updateFormData, updateTrips }) {
           <Form.Control
             type="text"
             placeholder="Enter starting airport"
-            value={formData.airportData.startAirport || ''}
+            defaultValue={formData.airportData.startAirport || ''}
             onChange={(e) => setStartAirport(e.target.value)}
           />
         </Form.Group>
@@ -63,7 +63,7 @@ export default function Flight({ formData, updateFormData, updateTrips }) {
           <Form.Control
             type="text"
             placeholder="Enter ending airport"
-            value={formData.airportData.endAirport || ''}
+            defaultValue={formData.airportData.endAirport || ''}
             onChange={(e) => setEndAirport(e.target.value)}
           />
         </Form.Group>

@@ -52,10 +52,9 @@ export default function Hotel({ latitude, longitude, guests, checkIn, checkOut, 
     updateTrips(newTrip);
   };
 
-
   return (
     <>
-      {hotelData && (
+      {hotelData ? (
         <Carousel>
           {hotelData.map((data, index) => (
             <Carousel.Item key={index}>
@@ -68,7 +67,7 @@ export default function Hotel({ latitude, longitude, guests, checkIn, checkOut, 
             </Carousel.Item>
           ))}
         </Carousel>
-      )}
+      ) : (<p>Hotel data loading...</p>)}
     </>
   );
 }

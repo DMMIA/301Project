@@ -37,7 +37,7 @@ export default function CarRental({ latitude, longitude, iataCode, guests, check
 
   return (
     <>
-      {carRentalData && (
+      {carRentalData ? (
         <Carousel>
           {carRentalData.map((offer) => (
             <Carousel.Item key={offer.id}>
@@ -56,7 +56,7 @@ export default function CarRental({ latitude, longitude, iataCode, guests, check
             </Carousel.Item>
           ))}
         </Carousel>
-      )}
+      ) : (<p>Car data loading...</p>)}
     </>
   )
 }
