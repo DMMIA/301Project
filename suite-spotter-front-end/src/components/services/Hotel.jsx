@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
+import Button from 'react-bootstrap/Button';
 
 export default function Hotel({ latitude, longitude, guests, checkIn, checkOut, updateTrips }) {
   const [hotelData, setHotelData] = useState(null);
@@ -52,10 +53,9 @@ export default function Hotel({ latitude, longitude, guests, checkIn, checkOut, 
     updateTrips(newTrip);
   };
 
-
   return (
     <>
-      {hotelData && (
+      {hotelData ? (
         <Carousel>
           {hotelData.map((data, index) => (
             <Carousel.Item key={index}>
@@ -63,12 +63,12 @@ export default function Hotel({ latitude, longitude, guests, checkIn, checkOut, 
                 <p>Beds: {data.beds}</p>
                 <p>Bed Size: {data.bedType}</p>
                 <p>Price: {data.price.currency} {data.price.total}</p>
-                <button onClick={() => handleButtonClick(data)}>Add to My Trips</button>
+                <Button className='submission-btn' onClick={() => handleButtonClick(data)}>Add to My Trips</Button>
               </div>
             </Carousel.Item>
           ))}
         </Carousel>
-      )}
+      ) : (<p>Hotel data loading...</p>)}
     </>
   );
 }

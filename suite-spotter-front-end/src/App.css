@@ -108,11 +108,13 @@ p {
 
 .navbar-collapse .navbar-nav .auth-button {
   background-color: var(--earth-brown);
+  border-color: var(--earth-brown);
   color: var(--soft-ivory);
 }
 
 .nav-buttons .navbar-collapse .navbar-nav .auth-button:focus,
 .nav-buttons .navbar-collapse .navbar-nav .auth-button:hover {
+  background-color: var(--sage-green);
   border-color: var(--sage-green);
 }
 

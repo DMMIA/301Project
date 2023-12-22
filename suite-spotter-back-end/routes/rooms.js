@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
+    console.log('rooms');
     const amadeus = req.amadeus;
     const { latitude, longitude, guests, checkIn, checkOut, } = req.query;
 
@@ -22,10 +23,10 @@ router.get('/', async (req, res) => {
       bestRateOnly: false,
     };
     if (checkIn) {
-      myObject.checkInDate = checkIn;
+      body.checkInDate = checkIn;
     }
     if (checkOut) {
-      myObject.checkOutDate = checkOut;
+      body.checkOutDate = checkOut;
     }
     const roomResponse = await amadeus.shopping.hotelOffersSearch.get(body);
     const rooms = roomResponse.data;

@@ -37,7 +37,7 @@ export default function CarRental({ latitude, longitude, iataCode, guests, check
 
   return (
     <>
-      {carRentalData && (
+      {carRentalData ? (
         <Carousel>
           {carRentalData.map((offer) => (
             <Carousel.Item key={offer.id}>
@@ -51,12 +51,12 @@ export default function CarRental({ latitude, longitude, iataCode, guests, check
                 <p>Provider: {offer.serviceProvider.name}</p>
                 <p>Seats: {offer.vehicle.seats[0].count}</p>
                 <p>Price: {offer.quotation.monetaryAmount} {offer.quotation.currencyCode}</p>
-                <Button onClick={() => handleButtonClick(offer)}>Add to My Trips </Button>
+                <Button className='submission-btn' onClick={() => handleButtonClick(offer)}>Add to My Trips </Button>
               </Carousel.Caption>
             </Carousel.Item>
           ))}
         </Carousel>
-      )}
+      ) : (<p>Car data loading...</p>)}
     </>
   )
 }
