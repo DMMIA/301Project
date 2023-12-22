@@ -12,7 +12,10 @@
     justify-content:center;
 }
 
-p, h1 {
-    color: #6AA7B2;
+p {
+    color: #6aa7b2;
 }
 
+h1 {
+    color: #6aa7b2;
+}
