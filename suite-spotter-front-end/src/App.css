@@ -25,9 +25,20 @@ body {
   width: 100%;
 }
 
+.about-container {
+  display: flex;
+}
+
 .container {
   padding: 20px;
   text-align: center;
+}
+
+.top-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .members-container {
@@ -38,6 +49,11 @@ body {
 
 .team-mission {
   color: var(--earth-brown);
+}
+
+.mission-container {
+  width: 60%;
+  margin: auto;
 }
 
 .member h2 {
@@ -52,6 +68,7 @@ body {
   text-align: center;
   width: 250px;
   margin: 10px;
+  border-radius: 10px;
 }
 
 .member img {
@@ -59,6 +76,16 @@ body {
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.team-logo {
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.team-link {
+  font-style: italic;
+  color: var(--earth-brown);
 }
 
 .links a {
@@ -93,6 +120,11 @@ p {
 
 .nav-buttons {
   width: 50%;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: right;
 }
 
 .nav-buttons .navbar-collapse .navbar-nav>* {
