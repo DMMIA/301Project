@@ -50,7 +50,7 @@ const Activities = (props) => {
 
 
   async function getWeatherFromSearch() {
-    const localApi = `${SERVER}`;
+    // const localApi = `${SERVER}`;
     console.log(`https://suite-spotter-back-end.onrender.com/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
     const response = await axios.get(`https://suite-spotter-back-end.onrender.com/weather?longitude=${long}&latitude=${lat}&checkIn=${checkIn}&checkOut=${checkOut}`);
     setWeatherData(response.data);
@@ -58,8 +58,8 @@ const Activities = (props) => {
 
   async function getRestaurantFromSearch() {
     try {
-      const localApi = `${SERVER}`;
-      const response = await axios.get(`${localApi}/food`);
+      // const localApi = `${SERVER}`;
+      const response = await axios.get(`https://suite-spotter-back-end.onrender.com/food?latitude=${lat}&longitude=${long}`);
       
       const restaurantData = response.data;
 
@@ -72,8 +72,8 @@ const Activities = (props) => {
 
   async function getEntertainmentFromSearch() {
     try {
-      const localApi = `${SERVER}`;
-      const response = await axios.get(`${localApi}/poi`);
+      // const localApi = `${SERVER}`;
+      const response = await axios.get(`https://suite-spotter-back-end.onrender.com/poi?latitude=${lat}&longitude=${long}`);
       
       const entertainmentData = response.data;
 
@@ -93,8 +93,6 @@ const Activities = (props) => {
           <Card style={{ width: '18rem' }}>
             <Card.Body>
              {weatherData && ( <Weather weatherData={weatherData} />)}
-                 
-                
             </Card.Body>
           </Card>
         </Col>
