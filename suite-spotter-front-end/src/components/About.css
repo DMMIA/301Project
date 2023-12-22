@@ -11,3 +11,8 @@
     display:flex;
     justify-content:center;
 }
+
+p, h1 {
+    color: #6AA7B2;
+}
+
